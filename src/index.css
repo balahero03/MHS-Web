@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --primary: #1e3a8a;
+  --secondary: #3b82f6;
+  --text-main: #1e293b;
+  --text-dim: #64748b;
+  --bg-white: #ffffff;
+  --bg-soft: #f8fafc;
+  --border: #e2e8f0;
+
+  /* Image Palette Pastels - Precise matches */
+  --p-blue: rgba(186, 215, 255, 0.4);
+  --p-green: rgba(187, 247, 208, 0.4);
+  --p-purple: rgba(216, 180, 254, 0.4);
+  --p-orange: rgba(254, 215, 170, 0.4);
+
+  --font-main: 'Plus Jakarta Sans', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-white);
+  color: var(--text-main);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Dense Aesthetic Background Wrapper */
+.bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Polygons scattered like in image */
+.bg-shape {
+  position: absolute;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  opacity: 0.3;
+  animation: float 20s infinite linear;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+  33% {
+    transform: translate(30px, 50px) rotate(10deg);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) rotate(-5deg);
+  }
+
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+/* Math Symbols scattered like in image */
+.bg-symbol {
+  position: absolute;
+  font-family: 'Times New Roman', serif;
+  font-style: italic;
+  font-weight: 400;
+  user-select: none;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.sym-md {
+  font-size: 2.5rem;
+}
+
+.sym-lg {
+  font-size: 4rem;
+  opacity: 0.15;
+}
+
+.sym-sm {
+  font-size: 1.5rem;
+  opacity: 0.4;
+}
+
+/* Colors for symbols from the image */
+.col-green {
+  color: #22c55e;
+  opacity: 0.2;
+}
+
+.col-orange {
+  color: #f97316;
+  opacity: 0.25;
+}
+
+.col-blue {
+  color: #3b82f6;
+  opacity: 0.2;
+}
+
+.col-purple {
+  color: #a855f7;
+  opacity: 0.2;
+}
+
+/* Logo Styles reconstructed from image */
+.mhs-branding {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.mhs-id-top {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.mhs-tri-logo {
+  width: 80px;
+  height: 70px;
+}
+
+.mhs-name-main {
+  font-size: 4.5rem;
+  font-weight: 700;
+  color: #1e3a8a;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+
+.mhs-tagline {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 3.5px;
+  color: #1e3a8a;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+/* Layout & Elements */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+header {
+  height: 90px;
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(15px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+}
+
+.nav-links {
+  display: flex;
+  gap: 3rem;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-weight: 700;
+  color: var(--text-dim);
+  transition: all 0.3s ease;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--secondary);
+}
+
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Content Blocks */
+.content-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 3rem;
+  transition: all 0.4s ease;
+}
+
+.content-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.1);
+  border-color: var(--secondary);
+}
