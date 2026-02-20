@@ -5,10 +5,13 @@ import Logo from '../components/Logo'
 
 const Home = () => {
     const events = [
-        { title: "Calculus Symposium", date: "MAR 15", desc: "Exploring the theoretical frameworks of fluid dynamics and chaos theory through the lens of Navier-Stokes equations.", icon: "∫" },
-        { title: "Cryptography Deep-Dive", date: "APR 02", desc: "Mathematical security in modern encryption, RSA architecture, and elliptic curve protocols.", icon: "⟿" },
-        { title: "Non-Euclidean Geometry", date: "APR 25", desc: "The mathematics of curved spaces and their applications in general relativity and cosmology.", icon: "◯" },
-        { title: "Prime Distribution", date: "MAY 10", desc: "Unlocking the mysteries of the Riemann Hypothesis and the distribution of primes in large fields.", icon: "ℙ" }
+        {
+            title: "Vignana Vaasal 2026",
+            date: "FEB 2026",
+            desc: "A workshop by RAMP (Research & Academic Mentorship Programme) fostering research orientation, academic excellence, and meaningful mentorship among participants. Organized by the Department of Mathematics, SSN College of Engineering.",
+            icon: "∂",
+            host: "RAMP · SSN College of Engineering"
+        }
     ]
     const [index, setIndex] = useState(0)
 
@@ -69,9 +72,7 @@ const Home = () => {
                         </h2>
 
                         <div className="carousel-wrapper" style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
-                            <button className="carousel-nav-large" onClick={prev}>
-                                <ChevronLeft size={32} />
-                            </button>
+                            {events.length > 1 && <button className="carousel-nav-large" onClick={prev}><ChevronLeft size={32} /></button>}
 
                             <div style={{ flex: 1, position: 'relative', height: '400px' }}>
                                 <AnimatePresence mode='wait'>
@@ -126,32 +127,49 @@ const Home = () => {
                                         <p style={{ color: 'var(--text-dim)', fontSize: '1.3rem', maxWidth: '800px', margin: '0 auto', lineHeight: 1.6 }}>
                                             {events[index].desc}
                                         </p>
+                                        {events[index].host && (
+                                            <span style={{
+                                                marginTop: '1.5rem',
+                                                display: 'inline-block',
+                                                fontFamily: 'var(--font-mono)',
+                                                fontSize: '0.8rem',
+                                                color: 'var(--secondary)',
+                                                letterSpacing: '1.5px',
+                                                fontWeight: '600',
+                                                background: 'rgba(59,130,246,0.08)',
+                                                padding: '6px 18px',
+                                                borderRadius: '100px',
+                                                border: '1px solid rgba(59,130,246,0.2)'
+                                            }}>
+                                                {events[index].host}
+                                            </span>
+                                        )}
                                     </Motion.div>
                                 </AnimatePresence>
                             </div>
 
-                            <button className="carousel-nav-large" onClick={next}>
-                                <ChevronRight size={32} />
-                            </button>
+                            {events.length > 1 && <button className="carousel-nav-large" onClick={next}><ChevronRight size={32} /></button>}
                         </div>
 
-                        {/* Pagination dots */}
-                        <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', marginTop: '3rem' }}>
-                            {events.map((_, i) => (
-                                <div
-                                    key={i}
-                                    onClick={() => setIndex(i)}
-                                    style={{
-                                        width: i === index ? '40px' : '12px',
-                                        height: '12px',
-                                        borderRadius: '6px',
-                                        background: i === index ? 'var(--secondary)' : 'var(--p-blue)',
-                                        cursor: 'pointer',
-                                        transition: 'all 0.3s ease'
-                                    }}
-                                />
-                            ))}
-                        </div>
+                        {/* Pagination dots — only show when multiple events */}
+                        {events.length > 1 && (
+                            <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', marginTop: '3rem' }}>
+                                {events.map((_, i) => (
+                                    <div
+                                        key={i}
+                                        onClick={() => setIndex(i)}
+                                        style={{
+                                            width: i === index ? '40px' : '12px',
+                                            height: '12px',
+                                            borderRadius: '6px',
+                                            background: i === index ? 'var(--secondary)' : 'var(--p-blue)',
+                                            cursor: 'pointer',
+                                            transition: 'all 0.3s ease'
+                                        }}
+                                    />
+                                ))}
+                            </div>
+                        )}
                     </div>
                 </div>
             </section>

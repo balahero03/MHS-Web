@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion as Motion } from 'framer-motion'
-import { Linkedin, Mail, X, Scale, Hash, Compass } from 'lucide-react'
+import { Linkedin, Mail, X, Scale, Hash, Compass, GraduationCap } from 'lucide-react'
 
 const StackedModal = ({ member, onClose }) => {
     if (!member) return null;
@@ -61,8 +61,19 @@ const StackedModal = ({ member, onClose }) => {
                         </div>
 
                         <div className="dossier-socials">
-                            <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="social-node"><Linkedin size={20} /></a>
-                            <a href={`mailto:${member.email}`} className="social-node"><Mail size={20} /></a>
+                            {member.linkedin && (
+                                <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="social-node" title="LinkedIn">
+                                    <Linkedin size={20} />
+                                </a>
+                            )}
+                            {member.scholar && (
+                                <a href={member.scholar} target="_blank" rel="noopener noreferrer" className="social-node" title="Google Scholar">
+                                    <GraduationCap size={20} />
+                                </a>
+                            )}
+                            <a href={`mailto:${member.email}`} className="social-node" title="Email">
+                                <Mail size={20} />
+                            </a>
                         </div>
                     </aside>
 

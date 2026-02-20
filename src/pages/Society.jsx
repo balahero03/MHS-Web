@@ -13,8 +13,9 @@ const Society = () => {
         dept: "Department of Mathematics, SSNCE",
         bio: "Dr. I. Jayakaran Amalraj is an Associate Professor in the Department of Mathematics at SSN College of Engineering with over 28 years of teaching experience. He is dedicated to helping students deeply understand mathematical concepts rather than simply complete coursework. As Faculty In-Charge of the Mathematics Honor Society (MHS), he actively supports student-led initiatives and fosters a culture of academic rigor, curiosity, and integrity.",
         photo: "/images-club_members/ijk-sir-img.jpeg",
-        linkedin: "https://linkedin.com",
-        email: "jayakaran@ssn.edu.in"
+        linkedin: null,
+        scholar: "https://scholar.google.com/citations?user=Jz7fgBcAAAAJ&hl=en",
+        email: "jayakarana@ssn.edu.in"
     }
 
     // ── Level 2 · President & Vice President ──────────────────────────────────
@@ -26,8 +27,8 @@ const Society = () => {
             year: "2028",
             bio: "Vishwa is a Biomedical Engineering undergraduate at SSN College of Engineering and serves as President of the Mathematics Honor Society. He enjoys designing mathematical problems, building educational resources, exploring interdisciplinary research ideas, and mentoring younger students. He believes that learning should feel both challenging and deeply rewarding — driven not by pressure, but by genuine intellectual excitement.",
             photo: "/images-club_members/vishwa-image.jpeg",
-            linkedin: "https://linkedin.com",
-            email: "vishwa@ssn.edu.in"
+            linkedin: "https://www.linkedin.com/in/vishwa-siva/",
+            email: "vishwaaditya2410369@ssn.edu.in"
         },
         {
             name: "Aravindaa Krishnan",
@@ -94,7 +95,7 @@ const Society = () => {
             year: "2028",
             bio: "Yogesh is a Biomedical Engineering undergraduate at SSN College of Engineering and serves as Treasurer of the Mathematics Honor Society. Outside of his academic work, Yogesh enjoys cycling and trekking, and he loves visiting new places and exploring more people.",
             photo: "/images-club_members/yogesh-image.jpeg",
-            linkedin: "https://linkedin.com",
+            linkedin: "https://www.linkedin.com/in/yogesh-vaduganathan-24a52a32a",
             email: "yogesh@ssn.edu.in"
         },
         {
@@ -110,12 +111,12 @@ const Society = () => {
         {
             name: "Boobesh",
             role: "Head of Design",
-            dept: "SSN College of Engineering",
+            dept: "Electrical & Electronics Engineering",
             year: "2028",
             bio: "Creative mind at the helm of MHS visual identity. Boobesh leads the design initiatives, crafting compelling visuals and maintaining the aesthetic coherence of all society materials, branding, and event collateral.",
             photo: "/images-club_members/boobesh-image.jpeg",
-            linkedin: "https://linkedin.com",
-            email: "boobesh@ssn.edu.in"
+            linkedin: null,
+            email: "boobesh2410192@ssn.edu.in"
         },
         {
             name: "Kishor V",
