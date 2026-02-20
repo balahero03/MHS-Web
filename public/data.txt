@@ -1,0 +1,121 @@
+faculty  -1 root lvl 1
+Dr. I. Jayakaran Amalraj
+M.Sc., M.Phil., Ph.D.
+Dr. I. Jayakaran Amalraj is an Associate Professor in the
+Department of Mathematics at SSN College of Engineering with
+over 28 years of teaching experience. He is dedicated to helping
+students deeply understand mathematical concepts rather than
+simply complete coursework. As Faculty In-Charge of the
+Mathematics Honor Society (MHS), he actively supports
+student-led initiatives and fosters a culture of academic rigor,
+curiosity, and integrity.
+
+president -2  lvl 2
+Vishwa Sivamurugan
+President of MHS
+Vishwa is a Biomedical Engineering undergraduate at SSN
+College of Engineering and serves as President of the Mathematics
+Honor Society.
+Outside of his academic work, Vishwa enjoys designing
+mathematical problems, building educational resources, exploring
+interdisciplinary research ideas, and mentoring younger students.
+He believes that learning should feel both challenging and deeply
+rewarding — a process driven not by pressure, but by genuine
+intellectual excitement.
+
+vice president -3  lvl 2
+Aravindaa Krishnan
+Vice President of MHS
+Aravindaa is a Biomedical Engineering undergraduate at SSN
+College of Engineering, where she also serves as the VicePresident of the Mathematics Honor Society. Passionate about
+interdisciplinary innovation, she actively engages with
+professional communities such as IEEE Signal Processing Society
+(IEEE SPS). Her academic interests lie at the intersection of
+electronics, communication systems, and biology.
+aravindaakrishnan2410946@ssn.edu.in
+https://www.linkedin.com/in/aravindaa-krishnan-m-7a5b75309?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app
+
+secretary -4  lvl 3
+Name :*Yuva Sriram
+Position : Secretary
+*Year and Dept :*2nd year , BME
+Year of Passing : 2028
+About myself: Driven by a deep curiosity for scientific discovery, Yuva focuses on drug discovery and development, with a strong interest in nanotechnology and its role in nanomedicine for detecting and treating diseases. He is passionate about interdisciplinary innovation, connecting biology, chemistry, and engineering to create effective healthcare solutions that improve patient outcomes and contribute to meaningful scientific progress.
+Mail ID : yuva2410379@ssn.edu.in
+Linkedin :
+www.linkedin.com/in/yuva-sriram
+
+joint seceratry -5 lvl 3
+P Nethraa
+Head of Event Coordination
+2nd Year Computer Science Department
+2028
+Hey, this is Nethraa! My curiosity to learn and constantly challenge myself has been one of the biggest drivers of my life — whether I’m solving a complex math problem or pushing my limits on the basketball court.
+nethraapradheep@gmail.com
+https://www.linkedin.com/in/nethraa-p-4a1405334/
+
+Web Dev Head -6  lvl 3
+Balamuthukrishnan 
+A passionate tech enthusiast with a strong interest in web development and a deep curiosity for all things related to computers and technology. Driven by an innate desire to build and implement projects, he finds genuine joy in turning ideas into successful outcomes. His amiable personality, reliability, and strong sense of responsibility have earned him a valued role in the society. These core qualities not only define his character but also help strengthen and unify the team.
+balamuthukrishnan2412003@ssn.edu.in
+https://www.linkedin.com/in/bala-muthu-krishnan
+
+editorial Head -7  lvl 3
+OVIYA T S
+II - Department of IT 
+2024 - 2028
+Oviya T S is pursuing an undergraduate degree in Information
+Technology. She is a published author and passionate about
+education, policy-making, and writing. Alongside her technical
+studies, she explores how digital innovation can influence
+governance, public systems, and access to knowledge. Her
+interests lie at the intersection of technology and society, where
+she seeks to understand how thoughtful policy and ethical design
+can shape inclusive and sustainable futures. As a writer, she is
+drawn to ideas that spark dialogue and inspire change, using her
+voice to reflect on contemporary issues and advocate for
+meaningful progress. Through both her academic and literary
+pursuits, Oviya continues to build a profile that combines
+analytical thinking with creativity and social awareness.
+oviya2410048@ssn.edu.in
+https://www.linkedin.com/in/oviya-t-s-147b52329/
+
+Treasurer -8  lvl 4
+Yogesh
+pending..................
+
+Head public relations -9 lvl 4
+Smrithi S
+Head of Public Relations 
+2nd year in Biomedical Engineering 
+2024-2028
+Well spoken, articulate, level-headed and a just person.
+smrithi2410873@ssn.edu.in
+https://www.linkedin.com/in/smrithi-s-41968b389?utm_source=share_via&utm_content=profile&utm_medium=member_android
+Smrithi S. is a Biomedical Engineering undergraduate at SSN
+College of Engineering with a keen interest in the intersection of
+healthcare, technology, and innovation. Through her academic
+journey, she has developed a strong foundation in biomedical
+instrumentation, physiology, and problem-solving, striving to
+apply engineering principles to improve patient care and medical
+systems.
+Beyond academics, Smrithi has a deep passion for calligraphy. She
+finds joy in the art of lettering, appreciating the precision,
+patience, and creativity it demands.
+
+head of design -10 lvl 4
+boobesh
+pending...........
+
+web dev  -11 lvl 4
+Kishor V
+B.Tech - IT (2nd year)
+2024 - 2028
+I am an enthusiastic and self-motivated Information Technology student with a strong practical orientation and a passion for applying theoretical concepts to real-world problems. I continuously seek opportunities to enhance my technical skills, work on hands-on projects, and develop innovative solutions in the field of IT.
+Kishorveeraragavan28@gmail.com
+https://www.linkedin.com/in/kishor-v-b7bb9532a/
+
+
+
+
+

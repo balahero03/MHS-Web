@@ -6,95 +6,128 @@ import StackedModal from '../components/StackedModal'
 const Society = () => {
     const [selectedMember, setSelectedMember] = useState(null);
 
+    // ── Level 1 · Faculty ─────────────────────────────────────────────────────
     const faculty = {
-        name: "Dr. Arthur Cayley",
-        role: "Faculty Chair",
-        dept: "Pure Mathematics",
-        year: "Faculty Advisor",
-        bio: "A pioneer in algebraic structures, Dr. Cayley specializes in Group Theory and Matrix Algebra. He has authored multiple foundational texts and oversees the academic rigors of the MHS.",
-        photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=300",
-        github: "https://github.com", linkedin: "https://linkedin.com", email: "cayley@mhs.edu"
+        name: "Dr. I. Jayakaran Amalraj",
+        role: "Faculty Advisor",
+        dept: "Department of Mathematics, SSN College of Engineering",
+        bio: "Dr. I. Jayakaran Amalraj is an Associate Professor in the Department of Mathematics at SSN College of Engineering with over 28 years of teaching experience. He is dedicated to helping students deeply understand mathematical concepts rather than simply complete coursework. As Faculty In-Charge of the Mathematics Honor Society (MHS), he actively supports student-led initiatives and fosters a culture of academic rigor, curiosity, and integrity.",
+        photo: "/images-club_members/ijk-sir-img.jpeg",
+        linkedin: "https://linkedin.com",
+        email: "jayakaran@ssn.edu.in"
     }
 
+    // ── Level 2 · President & Vice President ──────────────────────────────────
     const leads = [
         {
-            name: "Ada Lovelace",
-            role: "Society President",
-            dept: "Applied Maths & Comp Sci",
-            year: "2026",
-            bio: "An algorithm specialist focused on the intersections of discrete mathematics and computational theory. Ada leads our strategic partnerships and student research workshops.",
-            photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=300",
-            github: "https://github.com", linkedin: "https://linkedin.com", email: "ada@mhs.edu"
-        },
-        {
-            name: "Carl Friedrich Gauss",
-            role: "Vice President",
-            dept: "Number Theory",
-            year: "2026",
-            bio: "Prince of Mathematics. Carl's work focus on prime distribution and magnetic constants. He manages the society's internal academic competitions and tutoring programs.",
-            photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=300",
-            github: "https://github.com", linkedin: "https://linkedin.com", email: "gauss@mhs.edu"
-        }
-    ]
-
-    const members = [
-        {
-            name: "Leonhard Euler",
-            role: "Secretary",
-            dept: "Mathematical Analysis",
-            year: "2027",
-            bio: "Dedicated to bridge theory and complex topography. Leonhard handles all society documentation and registry archives.",
-            photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300",
-            github: "https://github.com", linkedin: "https://linkedin.com", email: "euler@mhs.edu"
-        },
-        {
-            name: "Sophie Germain",
-            role: "Research Lead",
-            dept: "Elasticity Theory",
-            year: "2027",
-            bio: "Investigating the patterns of elastic surfaces and Fermat's Last Theorem applications. Sophie coordinates our monthly scholarly blog posts.",
-            photo: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=300",
-            github: "https://github.com", linkedin: "https://linkedin.com", email: "sophie@mhs.edu"
-        },
-        {
-            name: "Bernhard Riemann",
-            role: "Treasurer",
-            dept: "Differential Geometry",
-            year: "2027",
-            bio: "Exploring manifolds and non-Euclidean spaces. Bernhard manages the society's grants and library budget.",
-            photo: "https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&q=80&w=300",
-            github: "https://github.com", linkedin: "https://linkedin.com", email: "riemann@mhs.edu"
-        },
-        {
-            name: "Hypatia",
-            role: "Academic Mentor",
-            dept: "Neoplatonism & Astronomy",
-            year: "2027",
-            bio: "Specializing in conic sections and astrolabe construction. Hypatia mentors junior members in theoretical synthesis.",
-            photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=300",
-            github: "https://github.com", linkedin: "https://linkedin.com", email: "hypatia@mhs.edu"
-        },
-        {
-            name: "Blaise Pascal",
-            role: "Technical Lead",
-            dept: "Probability Theory",
-            year: "2027",
-            bio: "Developing computational fluids and probability frameworks. Blaise maintains the society's digital asset library.",
-            photo: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=300",
-            github: "https://github.com", linkedin: "https://linkedin.com", email: "pascal@mhs.edu"
-        },
-        {
-            name: "Isaac Newton",
-            role: "Research Associate",
-            dept: "Classical Mechanics",
+            name: "Vishwa Sivamurugan",
+            role: "President",
+            dept: "Biomedical Engineering",
             year: "2028",
-            bio: "Working on fluxions and gravitational constants. Isaac contributes to our monthly physics-math integration papers.",
-            photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=300",
-            github: "https://github.com", linkedin: "https://linkedin.com", email: "newton@mhs.edu"
+            bio: "Vishwa is a Biomedical Engineering undergraduate at SSN College of Engineering and serves as President of the Mathematics Honor Society. He enjoys designing mathematical problems, building educational resources, exploring interdisciplinary research ideas, and mentoring younger students. He believes that learning should feel both challenging and deeply rewarding — driven not by pressure, but by genuine intellectual excitement.",
+            photo: "/images-club_members/vishwa-image.jpeg",
+            linkedin: "https://linkedin.com",
+            email: "vishwa@ssn.edu.in"
+        },
+        {
+            name: "Aravindaa Krishnan",
+            role: "Vice President",
+            dept: "Biomedical Engineering",
+            year: "2028",
+            bio: "Aravindaa is a Biomedical Engineering undergraduate at SSN College of Engineering, where she serves as Vice President of the Mathematics Honor Society. Passionate about interdisciplinary innovation, she actively engages with IEEE Signal Processing Society (IEEE SPS). Her academic interests lie at the intersection of electronics, communication systems, and biology.",
+            photo: "/images-club_members/aravind-image.jpeg",
+            linkedin: "https://www.linkedin.com/in/aravindaa-krishnan-m-7a5b75309",
+            email: "aravindaakrishnan2410946@ssn.edu.in"
         }
     ]
 
+    // ── Level 3 · Core Team ───────────────────────────────────────────────────
+    const level3 = [
+        {
+            name: "Yuva Sriram",
+            role: "Secretary",
+            dept: "Biomedical Engineering",
+            year: "2028",
+            bio: "Driven by a deep curiosity for scientific discovery, Yuva focuses on drug discovery and development, with a strong interest in nanotechnology and its role in nanomedicine for detecting and treating diseases. He is passionate about interdisciplinary innovation, connecting biology, chemistry, and engineering to create effective healthcare solutions that improve patient outcomes.",
+            photo: "/images-club_members/yuva-image.jpeg",
+            linkedin: "https://www.linkedin.com/in/yuva-sriram",
+            email: "yuva2410379@ssn.edu.in"
+        },
+        {
+            name: "P Nethraa",
+            role: "Head of Event Coordination",
+            dept: "Computer Science",
+            year: "2028",
+            bio: "My curiosity to learn and constantly challenge myself has been one of the biggest drivers of my life — whether I'm solving a complex math problem or pushing my limits on the basketball court. Nethraa leads event planning and execution for all MHS activities.",
+            photo: "/images-club_members/nethra-image.jpeg",
+            linkedin: "https://www.linkedin.com/in/nethraa-p-4a1405334/",
+            email: "nethraapradheep@gmail.com"
+        },
+        {
+            name: "Balamuthukrishnan",
+            role: "Web Dev Head",
+            dept: "Information Technology",
+            year: "2028",
+            bio: "A passionate tech enthusiast with a strong interest in web development and a deep curiosity for all things related to computers and technology. Driven by an innate desire to build and implement projects, he finds genuine joy in turning ideas into successful outcomes. His reliability and sense of responsibility help strengthen and unify the team.",
+            photo: "https://ui-avatars.com/api/?name=Balamuthukrishnan&background=0d0d1a&color=a78bfa&size=300&bold=true",
+            linkedin: "https://www.linkedin.com/in/bala-muthu-krishnan",
+            email: "balamuthukrishnan2412003@ssn.edu.in"
+        },
+        {
+            name: "Oviya T S",
+            role: "Editorial Head",
+            dept: "Information Technology",
+            year: "2028",
+            bio: "Oviya T S is a published author passionate about education, policy-making, and writing. Her interests lie at the intersection of technology and society — understanding how thoughtful policy and ethical design can shape inclusive futures. As a writer, she uses her voice to reflect on contemporary issues and inspire meaningful progress.",
+            photo: "/images-club_members/oviya-image.jpeg",
+            linkedin: "https://www.linkedin.com/in/oviya-t-s-147b52329/",
+            email: "oviya2410048@ssn.edu.in"
+        }
+    ]
 
+    // ── Level 4 · Extended Team ───────────────────────────────────────────────
+    const level4 = [
+        {
+            name: "Yogesh",
+            role: "Treasurer",
+            dept: "Mathematics",
+            year: "2028",
+            bio: "Manages the society's financial operations including budget planning, expense tracking, and fund allocation, ensuring the smooth financial functioning of all MHS activities and events.",
+            photo: "/images-club_members/yogesh-image.jpeg",
+            linkedin: "https://linkedin.com",
+            email: "yogesh@ssn.edu.in"
+        },
+        {
+            name: "Smrithi S",
+            role: "Head of Public Relations",
+            dept: "Biomedical Engineering",
+            year: "2028",
+            bio: "Smrithi S. is a Biomedical Engineering undergraduate with a keen interest in the intersection of healthcare, technology, and innovation. She has developed a strong foundation in biomedical instrumentation and physiology. Beyond academics, Smrithi has a deep passion for calligraphy — appreciating the precision, patience, and creativity it demands.",
+            photo: "/images-club_members/smriti-image.jpeg",
+            linkedin: "https://www.linkedin.com/in/smrithi-s-41968b389",
+            email: "smrithi2410873@ssn.edu.in"
+        },
+        {
+            name: "Boobesh",
+            role: "Head of Design",
+            dept: "Mathematics",
+            year: "2028",
+            bio: "Creative mind at the helm of MHS visual identity. Boobesh leads the design initiatives, crafting compelling visuals and maintaining the aesthetic coherence of all society materials, branding, and event collateral.",
+            photo: "https://ui-avatars.com/api/?name=Boobesh&background=0d0d1a&color=a78bfa&size=300&bold=true",
+            linkedin: "https://linkedin.com",
+            email: "boobesh@ssn.edu.in"
+        },
+        {
+            name: "Kishor V",
+            role: "Web Developer",
+            dept: "Information Technology",
+            year: "2028",
+            bio: "An enthusiastic and self-motivated Information Technology student with a strong practical orientation and a passion for applying theoretical concepts to real-world problems. He continuously seeks opportunities to enhance his technical skills, work on hands-on projects, and develop innovative solutions in the field of IT.",
+            photo: "/images-club_members/kishor-image.png",
+            linkedin: "https://www.linkedin.com/in/kishor-v-b7bb9532a/",
+            email: "Kishorveeraragavan28@gmail.com"
+        }
+    ]
 
     return (
         <div className="container" style={{ padding: '100px 0' }}>
@@ -117,14 +150,15 @@ const Society = () => {
             </header>
 
             <div className="tree-container">
-                {/* Faculty Level */}
+
+                {/* ── Level 1 · Faculty Advisor ─────────────────────────── */}
                 <div className="tree-node">
                     <MemberCard member={faculty} onClick={setSelectedMember} />
                     <div className="tree-line-v"></div>
                     <div style={{ position: 'absolute', bottom: '-25px', color: 'var(--text-dim)', fontSize: '0.7rem', fontWeight: '800' }}>FACULTY ADVISOR</div>
                 </div>
 
-                {/* Leads Level */}
+                {/* ── Level 2 · President & Vice President ─────────────── */}
                 <div className="tree-node" style={{ width: '100%' }}>
                     <div className="tree-line-h" style={{ width: '500px', left: '50%', transform: 'translateX(-50%)' }}></div>
                     <div className="tree-row">
@@ -133,25 +167,41 @@ const Society = () => {
                                 <div className="tree-line-v-top"></div>
                                 <MemberCard member={lead} onClick={setSelectedMember} />
                                 <div className="tree-line-v"></div>
-                                <div style={{ position: 'absolute', bottom: '-25px', color: 'var(--text-dim)', fontSize: '0.7rem', fontWeight: '800' }}>{lead.role}</div>
+                                <div style={{ position: 'absolute', bottom: '-25px', color: 'var(--text-dim)', fontSize: '0.7rem', fontWeight: '800' }}>{lead.role.toUpperCase()}</div>
                             </div>
                         ))}
                     </div>
                 </div>
 
-                {/* General Members Level */}
+                {/* ── Level 3 · Core Team ───────────────────────────────── */}
                 <div className="tree-node" style={{ width: '100%' }}>
-                    <div className="tree-line-h" style={{ width: '1100px', left: '50%', transform: 'translateX(-50%)' }}></div>
+                    <div className="tree-line-h" style={{ width: '1050px', left: '50%', transform: 'translateX(-50%)' }}></div>
                     <div className="tree-row">
-                        {members.map((member, i) => (
+                        {level3.map((member, i) => (
                             <div key={i} className="tree-node">
                                 <div className="tree-line-v-top"></div>
                                 <MemberCard member={member} onClick={setSelectedMember} />
-                                <div style={{ position: 'absolute', bottom: '-25px', color: 'var(--text-dim)', fontSize: '0.7rem', fontWeight: '800' }}>{member.role}</div>
+                                <div className="tree-line-v"></div>
+                                <div style={{ position: 'absolute', bottom: '-25px', color: 'var(--text-dim)', fontSize: '0.7rem', fontWeight: '800' }}>{member.role.toUpperCase()}</div>
                             </div>
                         ))}
                     </div>
                 </div>
+
+                {/* ── Level 4 · Extended Team ───────────────────────────── */}
+                <div className="tree-node" style={{ width: '100%' }}>
+                    <div className="tree-line-h" style={{ width: '1050px', left: '50%', transform: 'translateX(-50%)' }}></div>
+                    <div className="tree-row">
+                        {level4.map((member, i) => (
+                            <div key={i} className="tree-node">
+                                <div className="tree-line-v-top"></div>
+                                <MemberCard member={member} onClick={setSelectedMember} />
+                                <div style={{ position: 'absolute', bottom: '-25px', color: 'var(--text-dim)', fontSize: '0.7rem', fontWeight: '800' }}>{member.role.toUpperCase()}</div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
             </div>
 
             <AnimatePresence>
