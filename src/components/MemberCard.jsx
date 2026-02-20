@@ -22,11 +22,6 @@ const MemberCard = ({ member, onClick }) => (
             <div className="member-photo-mini-container">
                 <img src={member.photo} alt={member.name} className="member-photo-mini" />
                 <div className="member-status-node" title="Verified Scholar"></div>
-                <div className="card-logic-icon">
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M3 3h18v18H3z M9 9l6 6 M15 9l-6 6" />
-                    </svg>
-                </div>
             </div>
             <div className="member-info-mini">
                 <h4 className="member-name-mini">{member.name}</h4>

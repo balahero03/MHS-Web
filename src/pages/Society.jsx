@@ -10,7 +10,7 @@ const Society = () => {
     const faculty = {
         name: "Dr. I. Jayakaran Amalraj",
         role: "Faculty Advisor",
-        dept: "Department of Mathematics, SSN College of Engineering",
+        dept: "Department of Mathematics, SSNCE",
         bio: "Dr. I. Jayakaran Amalraj is an Associate Professor in the Department of Mathematics at SSN College of Engineering with over 28 years of teaching experience. He is dedicated to helping students deeply understand mathematical concepts rather than simply complete coursework. As Faculty In-Charge of the Mathematics Honor Society (MHS), he actively supports student-led initiatives and fosters a culture of academic rigor, curiosity, and integrity.",
         photo: "/images-club_members/ijk-sir-img.jpeg",
         linkedin: "https://linkedin.com",
@@ -55,10 +55,10 @@ const Society = () => {
         },
         {
             name: "P Nethraa",
-            role: "Head of Event Coordination",
+            role: "Joint Secretary",
             dept: "Computer Science",
             year: "2028",
-            bio: "My curiosity to learn and constantly challenge myself has been one of the biggest drivers of my life — whether I'm solving a complex math problem or pushing my limits on the basketball court. Nethraa leads event planning and execution for all MHS activities.",
+            bio: "Hey, this is Nethraa! My curiosity to learn and constantly challenge myself has been one of the biggest drivers of my life — whether I'm solving a complex math problem or pushing my limits on the basketball court.",
             photo: "/images-club_members/nethra-image.jpeg",
             linkedin: "https://www.linkedin.com/in/nethraa-p-4a1405334/",
             email: "nethraapradheep@gmail.com"
@@ -69,7 +69,7 @@ const Society = () => {
             dept: "Information Technology",
             year: "2028",
             bio: "A passionate tech enthusiast with a strong interest in web development and a deep curiosity for all things related to computers and technology. Driven by an innate desire to build and implement projects, he finds genuine joy in turning ideas into successful outcomes. His reliability and sense of responsibility help strengthen and unify the team.",
-            photo: "https://ui-avatars.com/api/?name=Balamuthukrishnan&background=0d0d1a&color=a78bfa&size=300&bold=true",
+            photo: "/images-club_members/bala-image.jpeg",
             linkedin: "https://www.linkedin.com/in/bala-muthu-krishnan",
             email: "balamuthukrishnan2412003@ssn.edu.in"
         },
@@ -90,9 +90,9 @@ const Society = () => {
         {
             name: "Yogesh",
             role: "Treasurer",
-            dept: "Mathematics",
+            dept: "Biomedical Engineering",
             year: "2028",
-            bio: "Manages the society's financial operations including budget planning, expense tracking, and fund allocation, ensuring the smooth financial functioning of all MHS activities and events.",
+            bio: "Yogesh is a Biomedical Engineering undergraduate at SSN College of Engineering and serves as Treasurer of the Mathematics Honor Society. Outside of his academic work, Yogesh enjoys cycling and trekking, and he loves visiting new places and exploring more people.",
             photo: "/images-club_members/yogesh-image.jpeg",
             linkedin: "https://linkedin.com",
             email: "yogesh@ssn.edu.in"
@@ -110,10 +110,10 @@ const Society = () => {
         {
             name: "Boobesh",
             role: "Head of Design",
-            dept: "Mathematics",
+            dept: "SSN College of Engineering",
             year: "2028",
             bio: "Creative mind at the helm of MHS visual identity. Boobesh leads the design initiatives, crafting compelling visuals and maintaining the aesthetic coherence of all society materials, branding, and event collateral.",
-            photo: "https://ui-avatars.com/api/?name=Boobesh&background=0d0d1a&color=a78bfa&size=300&bold=true",
+            photo: "/images-club_members/boobesh-image.jpeg",
             linkedin: "https://linkedin.com",
             email: "boobesh@ssn.edu.in"
         },
