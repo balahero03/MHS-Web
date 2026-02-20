@@ -4,6 +4,12 @@ import { motion as Motion } from 'framer-motion'
 const CoordinateCursor = () => {
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
     const [isHovering, setIsHovering] = useState(false)
+    const [isTouch, setIsTouch] = useState(true)
+
+    useEffect(() => {
+        // Only show on pointer:fine devices (mouse), not touch screens
+        setIsTouch(window.matchMedia('(pointer: coarse)').matches)
+    }, [])
 
     useEffect(() => {
         const handleMouseMove = (e) => {
@@ -26,6 +32,9 @@ const CoordinateCursor = () => {
             document.removeEventListener('mouseover', handleMouseEnter)
         }
     }, [])
+
+    if (isTouch) return null
+
 
     return (
         <div className="coordinate-cursor-container" style={{ pointerEvents: 'none', position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: 9999 }}>

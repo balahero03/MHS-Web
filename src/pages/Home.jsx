@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { motion as Motion, AnimatePresence } from 'framer-motion'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Clock } from 'lucide-react'
 import Logo from '../components/Logo'
+import ProblemOfTheWeek from '../components/ProblemOfTheWeek'
 
 const Home = () => {
     const events = [
@@ -52,6 +53,14 @@ const Home = () => {
 
             <section className="container" style={{ paddingBottom: '120px' }}>
                 <div style={{ position: 'relative' }}>
+                    {/* Glow shadow behind events */}
+                    <div style={{
+                        position: 'absolute', top: '50%', left: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        width: '800px', height: '500px',
+                        background: 'radial-gradient(ellipse, rgba(59,130,246,0.1) 0%, transparent 70%)',
+                        pointerEvents: 'none', zIndex: -1, filter: 'blur(30px)'
+                    }} />
                     <div style={{
                         position: 'absolute',
                         top: '-50px',
@@ -170,9 +179,34 @@ const Home = () => {
                                 ))}
                             </div>
                         )}
+                        {/* Coming Soon teaser */}
+                        <div style={{ marginTop: '3rem', paddingTop: '2rem', borderTop: '1px dashed var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px' }}>
+                            <Motion.div
+                                animate={{ opacity: [0.4, 1, 0.4] }}
+                                transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                                style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--secondary)' }}
+                            />
+                            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--text-dim)', letterSpacing: '3px', fontWeight: '700', textTransform: 'uppercase' }}>
+                                More events coming soon
+                            </span>
+                            <Clock size={14} color="var(--text-dim)" />
+                        </div>
                     </div>
                 </div>
             </section>
+
+            {/* ── Problem of the Week ──────────────────────────── */}
+            <div style={{ position: 'relative' }}>
+                {/* Glow shadow behind POTW */}
+                <div style={{
+                    position: 'absolute', top: '50%', left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    width: '700px', height: '400px',
+                    background: 'radial-gradient(ellipse, rgba(139,92,246,0.09) 0%, transparent 70%)',
+                    pointerEvents: 'none', zIndex: -1, filter: 'blur(30px)'
+                }} />
+                <ProblemOfTheWeek />
+            </div>
         </div>
     )
 }
