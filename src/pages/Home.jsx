@@ -57,7 +57,7 @@ const Home = () => {
                     <div style={{
                         position: 'absolute', top: '50%', left: '50%',
                         transform: 'translate(-50%, -50%)',
-                        width: '800px', height: '500px',
+                        width: '80vw', height: '500px', maxWidth: '800px',
                         background: 'radial-gradient(ellipse, rgba(59,130,246,0.1) 0%, transparent 70%)',
                         pointerEvents: 'none', zIndex: -1, filter: 'blur(30px)'
                     }} />
@@ -201,7 +201,7 @@ const Home = () => {
                 <div style={{
                     position: 'absolute', top: '50%', left: '50%',
                     transform: 'translate(-50%, -50%)',
-                    width: '700px', height: '400px',
+                    width: '80vw', height: '400px', maxWidth: '700px',
                     background: 'radial-gradient(ellipse, rgba(139,92,246,0.09) 0%, transparent 70%)',
                     pointerEvents: 'none', zIndex: -1, filter: 'blur(30px)'
                 }} />

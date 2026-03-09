@@ -161,7 +161,7 @@ const Society = () => {
 
                 {/* ── Level 2 · President & Vice President ─────────────── */}
                 <div className="tree-node" style={{ width: '100%' }}>
-                    <div className="tree-line-h" style={{ width: '500px', left: '50%', transform: 'translateX(-50%)' }}></div>
+                    <div className="tree-line-h tree-line-h-level2"></div>
                     <div className="tree-row">
                         {leads.map((lead, i) => (
                             <div key={i} className="tree-node">
@@ -176,7 +176,7 @@ const Society = () => {
 
                 {/* ── Level 3 · Core Team ───────────────────────────────── */}
                 <div className="tree-node" style={{ width: '100%' }}>
-                    <div className="tree-line-h" style={{ width: '1050px', left: '50%', transform: 'translateX(-50%)' }}></div>
+                    <div className="tree-line-h tree-line-h-level3"></div>
                     <div className="tree-row">
                         {level3.map((member, i) => (
                             <div key={i} className="tree-node">
@@ -191,7 +191,7 @@ const Society = () => {
 
                 {/* ── Level 4 · Extended Team ───────────────────────────── */}
                 <div className="tree-node" style={{ width: '100%' }}>
-                    <div className="tree-line-h" style={{ width: '1050px', left: '50%', transform: 'translateX(-50%)' }}></div>
+                    <div className="tree-line-h tree-line-h-level4"></div>
                     <div className="tree-row">
                         {level4.map((member, i) => (
                             <div key={i} className="tree-node">

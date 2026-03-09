@@ -105,12 +105,12 @@ function AppInner() {
       </main>
 
       {/* ── Footer ───────────────────────────────────────────────── */}
-      <footer style={{ borderTop: '1px solid var(--border)', background: 'rgba(255,255,255,0.5)', backdropFilter: 'blur(20px)' }}>
-        <div className="container" style={{ paddingTop: '72px', paddingBottom: '48px' }}>
-          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '40px' }}>
+      <footer className="main-footer">
+        <div className="container footer-content-container">
+          <div className="footer-logo-wrap">
             <Logo minimized={true} />
           </div>
-          <p style={{ textAlign: 'center', color: 'var(--text-dim)', maxWidth: '580px', margin: '0 auto 60px', fontSize: '0.95rem', lineHeight: 1.7 }}>
+          <p className="footer-intro-text">
             The Mathematics Honor Society (MHS) at SSN College of Engineering is a student-led academic body dedicated to fostering mathematical excellence, research culture, and interdisciplinary curiosity.
           </p>
 
@@ -182,7 +182,7 @@ function AppInner() {
           </div>
         </div>
 
-        <div style={{ borderTop: '1px solid var(--border)', padding: '20px 0', background: 'rgba(15,23,42,0.03)' }}>
+        <div className="footer-copyright-bar">
           <div className="container footer-bottom">
             <p style={{ color: 'var(--text-dim)', fontSize: '0.75rem', letterSpacing: '2px', fontWeight: '700' }}>
               © 2026 MATHEMATICS HONOR SOCIETY · SSNCE
