@@ -131,24 +131,25 @@ const Society = () => {
     ]
 
     return (
-        <div className="container" style={{ padding: '100px 0' }}>
-            <header style={{
+        <div className="container" style={{ padding: 'clamp(60px, 10vw, 100px) 1.5rem', position: 'relative', overflow: 'hidden' }}>
+            <div className="page-header" style={{
                 textAlign: 'center',
-                marginBottom: '8rem',
+                marginBottom: 'clamp(4rem, 10vw, 8rem)',
                 display: 'block',
                 background: 'none',
                 backdropFilter: 'none',
                 position: 'relative',
-                border: 'none'
+                border: 'none',
+                padding: '0 1rem'
             }}>
                 <Motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                 >
-                    <div style={{ fontSize: '1rem', color: 'var(--secondary)', fontWeight: '900', letterSpacing: '8px', textTransform: 'uppercase', marginBottom: '1.5rem' }}>Hierarchy of Excellence</div>
-                    <h2 style={{ fontSize: '4.5rem', color: 'var(--primary)', fontWeight: '900', letterSpacing: '-2px' }}>Society Governance</h2>
+                    <div style={{ fontSize: 'clamp(0.6rem, 2vw, 0.8rem)', color: 'var(--secondary)', fontWeight: '900', letterSpacing: '4px', textTransform: 'uppercase', marginBottom: '1rem' }}>Hierarchy of Excellence</div>
+                    <h2 style={{ fontSize: 'clamp(2.5rem, 8vw, 4.5rem)', color: 'var(--primary)', fontWeight: '900', letterSpacing: '-2px', lineHeight: 1.1 }}>Society Governance</h2>
                 </Motion.div>
-            </header>
+            </div>
 
             <div className="tree-container">
 
@@ -156,11 +157,10 @@ const Society = () => {
                 <div className="tree-node">
                     <MemberCard member={faculty} onClick={setSelectedMember} />
                     <div className="tree-line-v"></div>
-                    <div style={{ position: 'absolute', bottom: '-25px', color: 'var(--text-dim)', fontSize: '0.7rem', fontWeight: '800' }}>FACULTY ADVISOR</div>
                 </div>
 
                 {/* ── Level 2 · President & Vice President ─────────────── */}
-                <div className="tree-node" style={{ width: '100%' }}>
+                <div className="tree-node" style={{ width: '100%', position: 'relative' }}>
                     <div className="tree-line-h tree-line-h-level2"></div>
                     <div className="tree-row">
                         {leads.map((lead, i) => (
@@ -168,14 +168,13 @@ const Society = () => {
                                 <div className="tree-line-v-top"></div>
                                 <MemberCard member={lead} onClick={setSelectedMember} />
                                 <div className="tree-line-v"></div>
-                                <div style={{ position: 'absolute', bottom: '-25px', color: 'var(--text-dim)', fontSize: '0.7rem', fontWeight: '800' }}>{lead.role.toUpperCase()}</div>
                             </div>
                         ))}
                     </div>
                 </div>
 
                 {/* ── Level 3 · Core Team ───────────────────────────────── */}
-                <div className="tree-node" style={{ width: '100%' }}>
+                <div className="tree-node" style={{ width: '100%', position: 'relative' }}>
                     <div className="tree-line-h tree-line-h-level3"></div>
                     <div className="tree-row">
                         {level3.map((member, i) => (
@@ -183,21 +182,19 @@ const Society = () => {
                                 <div className="tree-line-v-top"></div>
                                 <MemberCard member={member} onClick={setSelectedMember} />
                                 <div className="tree-line-v"></div>
-                                <div style={{ position: 'absolute', bottom: '-25px', color: 'var(--text-dim)', fontSize: '0.7rem', fontWeight: '800' }}>{member.role.toUpperCase()}</div>
                             </div>
                         ))}
                     </div>
                 </div>
 
                 {/* ── Level 4 · Extended Team ───────────────────────────── */}
-                <div className="tree-node" style={{ width: '100%' }}>
+                <div className="tree-node" style={{ width: '100%', position: 'relative' }}>
                     <div className="tree-line-h tree-line-h-level4"></div>
                     <div className="tree-row">
                         {level4.map((member, i) => (
                             <div key={i} className="tree-node">
                                 <div className="tree-line-v-top"></div>
                                 <MemberCard member={member} onClick={setSelectedMember} />
-                                <div style={{ position: 'absolute', bottom: '-25px', color: 'var(--text-dim)', fontSize: '0.7rem', fontWeight: '800' }}>{member.role.toUpperCase()}</div>
                             </div>
                         ))}
                     </div>

@@ -80,10 +80,10 @@ const Home = () => {
                             Institutional Events
                         </h2>
 
-                        <div className="carousel-wrapper" style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
-                            {events.length > 1 && <button className="carousel-nav-large" onClick={prev}><ChevronLeft size={32} /></button>}
+                        <div className="carousel-wrapper" style={{ display: 'flex', alignItems: 'center', gap: '2rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+                            {events.length > 1 && <button className="carousel-nav-large desktop-only" onClick={prev}><ChevronLeft size={32} /></button>}
 
-                            <div style={{ flex: 1, position: 'relative', height: '400px' }}>
+                            <div className="carousel-main-content" style={{ flex: 1, position: 'relative', minHeight: '400px', display: 'flex', alignItems: 'center' }}>
                                 <AnimatePresence mode='wait'>
                                     <Motion.div
                                         key={index}
@@ -97,20 +97,20 @@ const Home = () => {
                                             flexDirection: 'column',
                                             alignItems: 'center',
                                             justifyContent: 'center',
-                                            height: '100%'
+                                            width: '100%'
                                         }}
                                     >
                                         <div style={{
-                                            width: '80px',
-                                            height: '80px',
+                                            width: 'clamp(60px, 10vw, 80px)',
+                                            height: 'clamp(60px, 10vw, 80px)',
                                             borderRadius: '50%',
                                             background: 'var(--p-blue)',
                                             display: 'flex',
                                             alignItems: 'center',
                                             justifyContent: 'center',
-                                            fontSize: '2.5rem',
+                                            fontSize: 'clamp(1.5rem, 5vw, 2.5rem)',
                                             color: 'var(--math-blue)',
-                                            marginBottom: '2rem',
+                                            marginBottom: '1.5rem',
                                             border: '2px solid var(--math-blue)'
                                         }}>
                                             {events[index].icon}
@@ -120,20 +120,20 @@ const Home = () => {
                                             background: 'var(--secondary)',
                                             padding: '6px 24px',
                                             borderRadius: '30px',
-                                            fontSize: '0.85rem',
+                                            fontSize: '0.8rem',
                                             fontWeight: '800',
                                             color: 'white',
                                             boxShadow: '0 4px 12px rgba(59, 130, 246, 0.3)',
-                                            marginBottom: '1.5rem'
+                                            marginBottom: '1rem'
                                         }}>
                                             {events[index].date}
                                         </span>
 
-                                        <h3 style={{ fontSize: '3.5rem', marginBottom: '1.5rem', color: 'var(--primary)', fontWeight: '800', lineHeight: 1.1 }}>
+                                        <h3 style={{ fontSize: 'clamp(1.8rem, 6vw, 3.5rem)', marginBottom: '1rem', color: 'var(--primary)', fontWeight: '800', lineHeight: 1.1 }}>
                                             {events[index].title}
                                         </h3>
 
-                                        <p style={{ color: 'var(--text-dim)', fontSize: '1.3rem', maxWidth: '800px', margin: '0 auto', lineHeight: 1.6 }}>
+                                        <p style={{ color: 'var(--text-dim)', fontSize: 'clamp(0.95rem, 3vw, 1.3rem)', maxWidth: '800px', margin: '0 auto', lineHeight: 1.6 }}>
                                             {events[index].desc}
                                         </p>
                                         {events[index].host && (
@@ -141,9 +141,9 @@ const Home = () => {
                                                 marginTop: '1.5rem',
                                                 display: 'inline-block',
                                                 fontFamily: 'var(--font-mono)',
-                                                fontSize: '0.8rem',
+                                                fontSize: '0.75rem',
                                                 color: 'var(--secondary)',
-                                                letterSpacing: '1.5px',
+                                                letterSpacing: '1px',
                                                 fontWeight: '600',
                                                 background: 'rgba(59,130,246,0.08)',
                                                 padding: '6px 18px',
@@ -157,7 +157,15 @@ const Home = () => {
                                 </AnimatePresence>
                             </div>
 
-                            {events.length > 1 && <button className="carousel-nav-large" onClick={next}><ChevronRight size={32} /></button>}
+                            {events.length > 1 && <button className="carousel-nav-large desktop-only" onClick={next}><ChevronRight size={32} /></button>}
+
+                            {/* Mobile specific controls */}
+                            {events.length > 1 && (
+                                <div className="mobile-only" style={{ display: 'flex', gap: '1rem', width: '100%', justifyContent: 'center', marginTop: '1rem' }}>
+                                    <button className="carousel-nav-large" style={{ width: '50px', height: '50px' }} onClick={prev}><ChevronLeft size={24} /></button>
+                                    <button className="carousel-nav-large" style={{ width: '50px', height: '50px' }} onClick={next}><ChevronRight size={24} /></button>
+                                </div>
+                            )}
                         </div>
 
                         {/* Pagination dots — only show when multiple events */}

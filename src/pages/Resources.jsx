@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import { motion as Motion } from 'framer-motion'
-import { FileText, ExternalLink, Download, Search, BookOpen, Sigma, GitBranch, BarChart2, Zap, Layers } from 'lucide-react'
+import React, { useState, useRef } from 'react'
+import { motion as Motion, AnimatePresence } from 'framer-motion'
+import { FileText, ExternalLink, Download, Search, BookOpen, Sigma, GitBranch, BarChart2, Zap, Layers, PlayCircle } from 'lucide-react'
 
 const categories = [
     {
@@ -195,6 +195,7 @@ const tagColors = {
 const Resources = () => {
     const [query, setQuery] = useState('')
     const [activeCategory, setActiveCategory] = useState('all')
+    const [isFocused, setIsFocused] = useState(false)
 
     const filtered = resources.filter(r => {
         const matchesCat = activeCategory === 'all' || r.category === activeCategory
@@ -204,15 +205,26 @@ const Resources = () => {
         return matchesCat && matchesSearch
     })
 
+    const searchRef = useRef(null)
+
+    const scrollToSearch = () => {
+        searchRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        // Focus the input after scrolling
+        setTimeout(() => {
+            const input = searchRef.current?.querySelector('input')
+            input?.focus()
+        }, 600)
+    }
+
     return (
         <div style={{ padding: '100px 0' }}>
             {/* Header */}
             <div className="container">
-                <header style={{ textAlign: 'center', marginBottom: '5rem', display: 'block', background: 'none', border: 'none', height: 'auto' }}>
+                <div className="page-header" style={{ textAlign: 'center', marginBottom: '5rem', display: 'block', background: 'none', border: 'none', height: 'auto' }}>
                     <div style={{ fontSize: '0.75rem', color: 'var(--secondary)', fontWeight: '900', letterSpacing: '6px', textTransform: 'uppercase', marginBottom: '1rem' }}>
                         Open Access · Engineering Mathematics
                     </div>
-                    <h2 style={{ fontSize: '4rem', color: 'var(--primary)', marginBottom: '1rem', fontWeight: '900', letterSpacing: '-2px' }}>
+                    <h2 style={{ fontSize: 'clamp(2.2rem, 8vw, 4rem)', color: 'var(--primary)', marginBottom: '1rem', fontWeight: '900', letterSpacing: '-2px', lineHeight: 1.1 }}>
                         The Library
                     </h2>
                     <p style={{ color: 'var(--text-dim)', fontSize: '1.1rem', maxWidth: '560px', margin: '0 auto 3rem', lineHeight: 1.7 }}>
@@ -220,27 +232,50 @@ const Resources = () => {
                     </p>
 
                     {/* Search */}
-                    <div style={{ maxWidth: '520px', margin: '0 auto', position: 'relative', display: 'flex', alignItems: 'center' }}>
-                        <Search style={{ position: 'absolute', left: '20px', color: 'var(--text-dim)', zIndex: 1 }} size={18} />
+                    <div ref={searchRef} style={{ 
+                        maxWidth: '520px', 
+                        margin: '0 auto', 
+                        position: 'relative', 
+                        display: 'flex', 
+                        alignItems: 'center',
+                        transition: 'all 0.3s ease',
+                        transform: isFocused ? 'scale(1.02)' : 'scale(1)'
+                    }}>
+                        <Motion.div
+                            animate={{ 
+                                scale: query ? [1, 1.2, 1] : 1,
+                                color: isFocused ? 'var(--secondary)' : 'var(--text-dim)'
+                            }}
+                            transition={{ duration: 0.3 }}
+                            style={{ position: 'absolute', left: '20px', zIndex: 1, display: 'flex' }}
+                        >
+                            <Search size={18} />
+                        </Motion.div>
                         <input
                             type="text"
                             placeholder="Search by title, author, or topic…"
                             value={query}
                             onChange={e => setQuery(e.target.value)}
+                            onFocus={() => setIsFocused(true)}
+                            onBlur={() => setIsFocused(false)}
                             style={{
                                 width: '100%',
                                 padding: '16px 24px 16px 52px',
                                 borderRadius: '16px',
-                                border: '1px solid var(--border)',
+                                border: '1px solid',
+                                borderColor: isFocused ? 'var(--secondary)' : 'var(--border)',
                                 fontSize: '0.95rem',
                                 outline: 'none',
-                                boxShadow: '0 10px 30px rgba(0,0,0,0.04)',
+                                boxShadow: isFocused 
+                                    ? '0 0 0 4px rgba(59, 130, 246, 0.15), 0 10px 30px rgba(0,0,0,0.04)' 
+                                    : '0 10px 30px rgba(0,0,0,0.04)',
                                 background: 'white',
-                                fontFamily: 'var(--font-main)'
+                                fontFamily: 'var(--font-main)',
+                                transition: 'all 0.3s ease'
                             }}
                         />
                     </div>
-                </header>
+                </div>
 
                 {/* Category Filter Pills */}
                 <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center', marginBottom: '3.5rem' }}>
@@ -267,60 +302,119 @@ const Resources = () => {
 
                 {/* Resource List */}
                 <div style={{ maxWidth: '960px', margin: '0 auto' }}>
-                    {filtered.length === 0 ? (
-                        <div style={{ textAlign: 'center', padding: '4rem', color: 'var(--text-dim)' }}>
-                            <p style={{ fontSize: '1.1rem' }}>No resources match your search.</p>
-                        </div>
-                    ) : (
-                        filtered.map((r, i) => (
+                    <AnimatePresence mode='popLayout'>
+                        {filtered.length === 0 ? (
                             <Motion.div
-                                key={`${r.title}-${i}`}
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: i * 0.05 }}
-                                whileHover={{ x: 10, borderColor: 'var(--secondary)', background: 'white' }}
-                                className="content-card"
-                                style={{ padding: '1.8rem 2rem', marginBottom: '1.2rem', display: 'flex', alignItems: 'flex-start', gap: '20px', borderRadius: '20px', cursor: 'default' }}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                style={{ textAlign: 'center', padding: '4rem', color: 'var(--text-dim)' }}
                             >
-                                {/* Icon */}
-                                <div style={{ background: 'var(--bg-soft)', padding: '16px', borderRadius: '16px', color: 'var(--secondary)', border: '1px solid var(--border)', flexShrink: 0 }}>
-                                    <FileText size={26} />
-                                </div>
-
-                                {/* Info */}
-                                <div style={{ flex: 1, minWidth: 0 }}>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', marginBottom: '4px' }}>
-                                        <h4 style={{ fontSize: '1.1rem', color: 'var(--primary)', fontWeight: '800', margin: 0 }}>{r.title}</h4>
-                                        <span style={{
-                                            padding: '2px 10px', borderRadius: '100px', fontSize: '0.7rem', fontWeight: '800',
-                                            background: tagColors[r.tag]?.bg || 'var(--p-blue)',
-                                            color: tagColors[r.tag]?.color || 'var(--secondary)',
-                                            letterSpacing: '0.5px', whiteSpace: 'nowrap'
-                                        }}>{r.tag}</span>
-                                    </div>
-                                    <p style={{ fontSize: '0.8rem', color: 'var(--secondary)', fontWeight: '700', marginBottom: '6px', fontFamily: 'var(--font-mono)' }}>{r.author}</p>
-                                    <p style={{ fontSize: '0.88rem', color: 'var(--text-dim)', lineHeight: 1.6, marginBottom: 0 }}>{r.desc}</p>
-                                </div>
-
-                                {/* Actions */}
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
-                                    <span style={{ fontSize: '0.75rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)', background: 'var(--bg-soft)', padding: '4px 10px', borderRadius: '8px', border: '1px solid var(--border)' }}>{r.type}</span>
-                                    <a href={r.href} target="_blank" rel="noopener noreferrer"
-                                        className="resource-action"
-                                        style={{
-                                            background: 'var(--bg-soft)', border: '1px solid var(--border)', borderRadius: '12px',
-                                            padding: '10px 14px', display: 'flex', alignItems: 'center', gap: '6px',
-                                            color: 'var(--text-dim)', textDecoration: 'none', fontWeight: '700',
-                                            fontSize: '0.78rem', transition: 'all 0.2s ease', letterSpacing: '0.5px'
-                                        }}>
-                                        <ExternalLink size={14} /> OPEN
-                                    </a>
-                                </div>
+                                <p style={{ fontSize: '1.1rem' }}>No resources match your search.</p>
                             </Motion.div>
-                        ))
-                    )}
+                        ) : (
+                            filtered.map((r, i) => (
+                                <Motion.div
+                                    key={r.title}
+                                    layout
+                                    initial={{ opacity: 0, y: 30 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, scale: 0.95 }}
+                                    transition={{ 
+                                        duration: 0.4, 
+                                        delay: i * 0.05,
+                                        layout: { type: "spring", damping: 25, stiffness: 300 }
+                                    }}
+                                    whileHover={{ 
+                                        y: -8, 
+                                        scale: 1.01,
+                                        borderColor: 'var(--secondary)', 
+                                        boxShadow: '0 25px 50px rgba(0, 0, 0, 0.08)',
+                                        background: 'rgba(255, 255, 255, 0.95)' 
+                                    }}
+                                    className="content-card resource-card-content"
+                                    style={{ 
+                                        padding: '1.8rem 2rem', 
+                                        marginBottom: '1.2rem', 
+                                        borderRadius: '24px', 
+                                        cursor: 'default',
+                                        background: 'rgba(255, 255, 255, 0.75)',
+                                        backdropFilter: 'blur(12px)',
+                                        border: '1px solid var(--border)',
+                                        transition: 'all 0.3s ease'
+                                    }}
+                                >
+                                    {/* Icon */}
+                                    <div style={{ 
+                                        background: r.tag === 'NPTEL' ? 'rgba(16, 185, 129, 0.1)' : 'var(--bg-soft)', 
+                                        padding: '16px', 
+                                        borderRadius: '16px', 
+                                        color: r.tag === 'NPTEL' ? 'var(--math-green)' : 'var(--secondary)', 
+                                        border: '1px solid',
+                                        borderColor: r.tag === 'NPTEL' ? 'rgba(16, 185, 129, 0.2)' : 'var(--border)',
+                                        flexShrink: 0,
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center'
+                                    }}>
+                                        {r.tag === 'NPTEL' ? <PlayCircle size={26} /> : (r.tag === 'MIT OpenCourseWare' ? <BookOpen size={26} /> : <FileText size={26} />)}
+                                    </div>
+
+                                    {/* Info */}
+                                    <div style={{ flex: 1, minWidth: 0 }}>
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', marginBottom: '4px' }}>
+                                            <h4 style={{ 
+                                                fontSize: '1.25rem', 
+                                                color: 'var(--primary)', 
+                                                fontWeight: '700', 
+                                                margin: 0,
+                                                fontFamily: 'var(--font-heading)',
+                                                letterSpacing: '0.2px',
+                                                lineHeight: 1.3
+                                            }}>{r.title}</h4>
+                                            <span style={{
+                                                padding: '3px 12px', borderRadius: '100px', fontSize: '0.72rem', fontWeight: '900',
+                                                background: tagColors[r.tag]?.bg || 'var(--p-blue)',
+                                                color: tagColors[r.tag]?.color || 'var(--secondary)',
+                                                letterSpacing: '0.8px', whiteSpace: 'nowrap', border: '1px solid rgba(0,0,0,0.05)'
+                                            }}>{r.tag}</span>
+                                        </div>
+                                        <p style={{ fontSize: '0.82rem', color: 'var(--secondary)', fontWeight: '800', marginBottom: '6px', fontFamily: 'var(--font-mono)' }}>{r.author}</p>
+                                        <p style={{ fontSize: '0.92rem', color: 'var(--text-main)', lineHeight: 1.6, marginBottom: 0, opacity: 0.9 }}>{r.desc}</p>
+                                    </div>
+
+                                    {/* Actions */}
+                                    <div className="resource-actions-wrap">
+                                        <span style={{ fontSize: '0.75rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)', background: 'var(--bg-soft)', padding: '4px 10px', borderRadius: '8px', border: '1px solid var(--border)' }}>{r.type}</span>
+                                        <a href={r.href} target="_blank" rel="noopener noreferrer"
+                                            className="resource-action"
+                                            style={{
+                                                background: 'var(--bg-soft)', border: '1px solid var(--border)', borderRadius: '12px',
+                                                padding: '10px 14px', display: 'flex', alignItems: 'center', gap: '6px',
+                                                color: 'var(--text-dim)', textDecoration: 'none', fontWeight: '700',
+                                                fontSize: '0.78rem', transition: 'all 0.2s ease', letterSpacing: '0.5px'
+                                            }}>
+                                            <ExternalLink size={14} /> OPEN
+                                        </a>
+                                    </div>
+                                </Motion.div>
+                            ))
+                        )}
+                    </AnimatePresence>
                 </div>
 
+
+                {/* Floating Search Button */}
+                <Motion.button
+                    initial={{ opacity: 0, scale: 0.5, y: 20 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={scrollToSearch}
+                    className="floating-search-btn"
+                >
+                    <Search size={24} />
+                </Motion.button>
 
             </div>
         </div>
