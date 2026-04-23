@@ -32,8 +32,12 @@ const StackedModal = ({ member, onClose }) => {
                     </svg>
                 </div>
 
-                <button className="dossier-close" onClick={onClose}>
+                <button className="dossier-close desktop-only" onClick={onClose} aria-label="Close dossier">
                     <X size={24} />
+                </button>
+
+                <button className="dossier-close-mobile mobile-only" onClick={onClose} aria-label="Close dossier">
+                    <X size={28} />
                 </button>
 
                 <div className="dossier-layout">

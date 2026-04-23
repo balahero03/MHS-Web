@@ -13,8 +13,8 @@ const Blogs = () => {
     return (
         <div className="container" style={{ padding: '100px 0' }}>
             <header style={{ textAlign: 'center', marginBottom: '6rem', position: 'relative', background: 'none', border: 'none', height: 'auto', display: 'block' }}>
-                <h2 style={{ fontSize: '4rem', color: 'var(--primary)', marginBottom: '1rem', fontWeight: '900' }}>Scholarly Blog</h2>
-                <p style={{ color: 'var(--text-dim)', fontSize: '1.2rem' }}>Insights into the mathematical universe from our top scholars.</p>
+                <h2 style={{ fontSize: 'clamp(2.2rem, 8vw, 4rem)', color: 'var(--primary)', marginBottom: '1rem', fontWeight: '900', lineHeight: 1.1 }}>Scholarly Blog</h2>
+                <p style={{ color: 'var(--text-dim)', fontSize: 'clamp(1rem, 3vw, 1.2rem)' }}>Insights into the mathematical universe from our top scholars.</p>
             </header>
 
             <div className="blog-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', gap: '30px' }}>

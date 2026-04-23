@@ -1,3 +1,9 @@
+# Dependency Directories
+node_modules
+/dist
+/dist-ssr
+/build
+
 # Logs
 logs
 *.log
@@ -7,12 +13,15 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Environment Variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 *.local
 
-# Editor directories and files
+# Editor / IDE
 .vscode/*
 !.vscode/extensions.json
 .idea
@@ -22,3 +31,22 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+*.sublime-project
+*.sublime-workspace
+
+# OS Files
+Thumbs.db
+desktop.ini
+
+# Tool Specific
+.eslintcache
+.stylelintcache
+.npm
+.cache
+.parcel-cache
+.turbo
+.vercel
+
+# AI / Assistant
+.gemini/
+.antigravity/

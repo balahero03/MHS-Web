@@ -60,33 +60,84 @@ function AppInner() {
             </ul>
           </nav>
 
-          {/* Mobile hamburger button */}
+          {/* Unified Mobile Menu Button (Pill Layout) */}
           <button
-            className={`hamburger-btn${menuOpen ? ' open' : ''}`}
+            className="mobile-unified-nav-btn mobile-only"
             onClick={() => setMenuOpen(o => !o)}
-            aria-label="Toggle navigation"
+            style={{ 
+              background: 'var(--primary)', 
+              color: '#ffffff',
+              padding: '0 18px',
+              height: '42px', /* Fixed medium height */
+              borderRadius: '100px',
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: '12px',
+              border: 'none',
+              cursor: 'pointer',
+              boxShadow: '0 8px 16px rgba(17, 85, 204, 0.2)',
+              transition: 'all 0.3s ease'
+            }}
           >
-            <span className="hamburger-bar" />
-            <span className="hamburger-bar" />
-            <span className="hamburger-bar" />
+            {/* Left side: Current Page Label */}
+            <span style={{ 
+              fontSize: '0.75rem', 
+              fontWeight: '800', 
+              textTransform: 'uppercase', 
+              letterSpacing: '1px',
+              borderRight: '1px solid rgba(255, 255, 255, 0.3)',
+              paddingRight: '12px',
+              display: 'flex',
+              alignItems: 'center',
+              height: '100%'
+            }}>
+              {location.pathname === '/' ? 'Archive' : (location.pathname === '/about' ? 'Society' : 'Library')}
+            </span>
+
+            {/* Right side: 3-Bar Menu */}
+            <div className={`hamburger-btn${menuOpen ? ' open' : ''}`} style={{ 
+              display: 'flex', 
+              flexDirection: 'column',
+              justifyContent: 'center',
+              width: '18px', 
+              height: '18px', /* Scaled to fit */
+              margin: 0,
+              padding: 0
+            }}>
+              <span className="hamburger-bar" style={{ background: '#ffffff', width: '100%', height: '2px', margin: '2px 0', transition: 'all 0.3s ease' }} />
+              <span className="hamburger-bar" style={{ background: '#ffffff', width: '100%', height: '2px', margin: '2px 0', transition: 'all 0.3s ease' }} />
+              <span className="hamburger-bar" style={{ background: '#ffffff', width: '100%', height: '2px', margin: '2px 0', transition: 'all 0.3s ease' }} />
+            </div>
           </button>
         </div>
       </header>
 
-      {/* Mobile nav overlay */}
+      {/* Mobile nav dropdown */}
       <AnimatePresence>
         {menuOpen && (
           <Motion.div
-            className="mobile-nav-overlay"
-            initial={{ opacity: 0, y: -12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.2 }}
+            className="mobile-nav-dropdown"
+            initial={{ opacity: 0, y: -20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -20, scale: 0.95 }}
+            transition={{ type: "spring", damping: 20, stiffness: 300 }}
           >
-            <ul className="mobile-nav-links">
-              <NavLink to="/" label="Archive" onClick={close} />
-              <NavLink to="/about" label="Society" onClick={close} />
-              <NavLink to="/resources" label="Library" onClick={close} />
+            <ul className="dropdown-list">
+              {[
+                { to: "/", label: "Archive", color: "var(--math-blue)", icon: <Globe size={14} /> },
+                { to: "/about", label: "Society", color: "var(--math-green)", icon: <MapPin size={14} /> },
+                { to: "/resources", label: "Library", color: "var(--math-purple)", icon: <ExternalLink size={14} /> }
+              ].map((item, i) => (
+                <li key={item.to}>
+                  <Link to={item.to} onClick={close} className={`dropdown-item ${location.pathname === item.to ? 'active' : ''}`}>
+                    <div className="dropdown-circle" style={{ background: item.color }}>
+                      {item.icon}
+                    </div>
+                    <span className="dropdown-label">{item.label}</span>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </Motion.div>
         )}

@@ -167,7 +167,7 @@ const ProblemOfTheWeek = () => {
                     maxWidth: '720px',
                     textAlign: 'center'
                 }}>
-                    <p style={{ fontSize: '1.25rem', color: 'var(--primary)', fontWeight: '700', fontFamily: 'var(--font-mono)', lineHeight: 1.8 }}>
+                    <p style={{ fontSize: 'clamp(1rem, 4vw, 1.25rem)', color: 'var(--primary)', fontWeight: '700', fontFamily: 'var(--font-mono)', lineHeight: 1.8 }}>
                         {problem.question}
                     </p>
                 </div>
