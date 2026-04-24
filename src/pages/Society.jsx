@@ -130,6 +130,21 @@ const Society = () => {
         }
     ]
 
+    const connectWithMhs = [
+        {
+            title: 'About the Institution',
+            content: 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi.',
+        },
+        {
+            title: 'Department of Mathematics',
+            content: 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip.',
+        },
+        {
+            title: 'Contact & Location',
+            content: 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea.',
+        }
+    ]
+
     return (
         <div className="container" style={{ padding: 'clamp(60px, 10vw, 100px) 1.5rem', position: 'relative', overflow: 'hidden' }}>
             <div className="page-header" style={{
@@ -207,6 +222,42 @@ const Society = () => {
                     <StackedModal member={selectedMember} onClose={() => setSelectedMember(null)} />
                 )}
             </AnimatePresence>
+
+            <section className="content-card" style={{ marginTop: '4rem' }}>
+                <div className="page-header" style={{ textAlign: 'left', marginBottom: '2rem', display: 'block', background: 'none', border: 'none', height: 'auto', padding: 0 }}>
+                    <h2 style={{ fontSize: 'clamp(2.5rem, 8vw, 4.5rem)', color: 'var(--primary)', fontWeight: '900', letterSpacing: '-2px', lineHeight: 1.1 }}>
+                        Connect With MHS
+                    </h2>
+                </div>
+
+                <div className="footer-grid" style={{ marginBottom: '2rem' }}>
+                    {connectWithMhs.map((item) => (
+                        <div key={item.title}>
+                            <h3 className="footer-col-title">{item.title}</h3>
+                            <p style={{ fontSize: '0.88rem', color: 'var(--text-dim)', lineHeight: 1.8 }}>{item.content}</p>
+                        </div>
+                    ))}
+                </div>
+
+                <div>
+                    <h3 className="footer-col-title">Quick Links</h3>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                        {[
+                            { label: 'Lorem Institutional Portal', href: '#' },
+                            { label: 'Lorem Department Hub', href: '#' },
+                            { label: 'Lorem Accreditation Overview', href: '#' },
+                        ].map((link) => (
+                            <a
+                                key={link.label}
+                                href={link.href}
+                                style={{ fontSize: '0.82rem', color: 'var(--text-dim)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '5px' }}
+                            >
+                                <span style={{ color: 'var(--secondary)' }}>•</span> {link.label}
+                            </a>
+                        ))}
+                    </div>
+                </div>
+            </section>
         </div>
     )
 }

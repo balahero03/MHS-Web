@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion as Motion } from 'framer-motion'
-import { MapPin, Phone, Mail, Globe, ExternalLink, Menu, X } from 'lucide-react'
+import { Globe, MapPin, ExternalLink, ChevronDown } from 'lucide-react'
 import './index.css'
 
 import GlobalBackground from './components/GlobalBackground'
@@ -13,6 +13,8 @@ import Home from './pages/Home'
 import Society from './pages/Society'
 import Blogs from './pages/Blogs'
 import Resources from './pages/Resources'
+import MentorDoubts from './pages/MentorDoubts'
+import MentorFeedback from './pages/MentorFeedback'
 
 const NavLink = ({ to, label, onClick }) => {
   const location = useLocation()
@@ -26,10 +28,20 @@ const NavLink = ({ to, label, onClick }) => {
 // Inner app — must be inside Router to use useLocation
 function AppInner() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [mentorMenuOpen, setMentorMenuOpen] = useState(false)
+  const [mobileMentorOpen, setMobileMentorOpen] = useState(false)
   const location = useLocation()
 
   // Close mobile nav on route change
-  useEffect(() => { setMenuOpen(false) }, [location])
+  useEffect(() => {
+    const resetTimer = window.setTimeout(() => {
+      setMenuOpen(false)
+      setMentorMenuOpen(false)
+      setMobileMentorOpen(false)
+    }, 0)
+
+    return () => window.clearTimeout(resetTimer)
+  }, [location])
   // Prevent body scroll when menu open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
@@ -37,6 +49,11 @@ function AppInner() {
   }, [menuOpen])
 
   const close = () => setMenuOpen(false)
+  const currentLabel = location.pathname.startsWith('/mentor-connect')
+    ? 'Mentor Connect'
+    : location.pathname === '/'
+      ? 'Archive'
+      : (location.pathname === '/about' ? 'Society' : 'Library')
 
   return (
     <div className="app">
@@ -52,11 +69,56 @@ function AppInner() {
           </Link>
 
           {/* Desktop navigation */}
-          <nav className="desktop-nav">
+          <nav className="desktop-nav" style={{ position: 'relative' }}>
             <ul className="nav-links">
               <NavLink to="/" label="Archive" />
               <NavLink to="/about" label="Society" />
               <NavLink to="/resources" label="Library" />
+              <li style={{ position: 'relative' }}>
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    setMentorMenuOpen((open) => !open)
+                  }}
+                  className={location.pathname.startsWith('/mentor-connect') ? 'active' : ''}
+                  aria-expanded={mentorMenuOpen}
+                  aria-label="Mentor Connect"
+                >
+                  Mentor Connect <ChevronDown size={13} style={{ verticalAlign: 'middle', marginLeft: '4px' }} />
+                </a>
+                <AnimatePresence>
+                  {mentorMenuOpen && (
+                    <Motion.div
+                      className="mobile-nav-dropdown"
+                      initial={{ opacity: 0, y: -10, scale: 0.98 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -10, scale: 0.98 }}
+                      transition={{ type: 'spring', damping: 20, stiffness: 300 }}
+                      style={{ position: 'absolute', top: 'calc(100% + 14px)', right: '0', width: '240px' }}
+                    >
+                      <ul className="dropdown-list">
+                        <li>
+                          <Link to="/mentor-connect/doubts" onClick={() => setMentorMenuOpen(false)} className={`dropdown-item ${location.pathname === '/mentor-connect/doubts' ? 'active' : ''}`}>
+                            <div className="dropdown-circle" style={{ background: 'var(--math-blue)' }}>
+                              <Globe size={14} />
+                            </div>
+                            <span className="dropdown-label">Ask a Doubt</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/mentor-connect/feedback" onClick={() => setMentorMenuOpen(false)} className={`dropdown-item ${location.pathname === '/mentor-connect/feedback' ? 'active' : ''}`}>
+                            <div className="dropdown-circle" style={{ background: 'var(--math-green)' }}>
+                              <MapPin size={14} />
+                            </div>
+                            <span className="dropdown-label">Give Feedback</span>
+                          </Link>
+                        </li>
+                      </ul>
+                    </Motion.div>
+                  )}
+                </AnimatePresence>
+              </li>
             </ul>
           </nav>
 
@@ -92,7 +154,7 @@ function AppInner() {
               alignItems: 'center',
               height: '100%'
             }}>
-              {location.pathname === '/' ? 'Archive' : (location.pathname === '/about' ? 'Society' : 'Library')}
+              {currentLabel}
             </span>
 
             {/* Right side: 3-Bar Menu */}
@@ -128,7 +190,7 @@ function AppInner() {
                 { to: "/", label: "Archive", color: "var(--math-blue)", icon: <Globe size={14} /> },
                 { to: "/about", label: "Society", color: "var(--math-green)", icon: <MapPin size={14} /> },
                 { to: "/resources", label: "Library", color: "var(--math-purple)", icon: <ExternalLink size={14} /> }
-              ].map((item, i) => (
+              ].map((item) => (
                 <li key={item.to}>
                   <Link to={item.to} onClick={close} className={`dropdown-item ${location.pathname === item.to ? 'active' : ''}`}>
                     <div className="dropdown-circle" style={{ background: item.color }}>
@@ -138,6 +200,42 @@ function AppInner() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <button
+                  className="dropdown-item"
+                  onClick={() => setMobileMentorOpen((open) => !open)}
+                  aria-expanded={mobileMentorOpen}
+                  aria-label="Mentor Connect"
+                  style={{ width: '100%', border: 'none', background: 'transparent', cursor: 'pointer' }}
+                >
+                  <div className="dropdown-circle" style={{ background: 'var(--secondary)' }}>
+                    <ChevronDown size={14} />
+                  </div>
+                  <span className="dropdown-label">Mentor Connect</span>
+                </button>
+              </li>
+              {mobileMentorOpen && (
+                <li>
+                  <ul className="dropdown-list" style={{ paddingLeft: '8px' }}>
+                    <li>
+                      <Link to="/mentor-connect/doubts" onClick={close} className={`dropdown-item ${location.pathname === '/mentor-connect/doubts' ? 'active' : ''}`}>
+                        <div className="dropdown-circle" style={{ background: 'var(--math-blue)' }}>
+                          <Globe size={14} />
+                        </div>
+                        <span className="dropdown-label">Ask a Doubt</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/mentor-connect/feedback" onClick={close} className={`dropdown-item ${location.pathname === '/mentor-connect/feedback' ? 'active' : ''}`}>
+                        <div className="dropdown-circle" style={{ background: 'var(--math-green)' }}>
+                          <MapPin size={14} />
+                        </div>
+                        <span className="dropdown-label">Give Feedback</span>
+                      </Link>
+                    </li>
+                  </ul>
+                </li>
+              )}
             </ul>
           </Motion.div>
         )}
@@ -151,6 +249,8 @@ function AppInner() {
             <Route path="/about" element={<Society />} />
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/resources" element={<Resources />} />
+            <Route path="/mentor-connect/doubts" element={<MentorDoubts />} />
+            <Route path="/mentor-connect/feedback" element={<MentorFeedback />} />
           </Routes>
         </AnimatePresence>
       </main>
@@ -158,88 +258,19 @@ function AppInner() {
       {/* ── Footer ───────────────────────────────────────────────── */}
       <footer className="main-footer">
         <div className="container footer-content-container">
-          <div className="footer-logo-wrap">
-            <Logo minimized={true} />
-          </div>
-          <p className="footer-intro-text">
-            The Mathematics Honor Society (MHS) at SSN College of Engineering is a student-led academic body dedicated to fostering mathematical excellence, research culture, and interdisciplinary curiosity.
-          </p>
-
-          <div className="footer-grid">
-            {/* Column 1 */}
-            <div>
-              <h4 className="footer-col-title">About the Institution</h4>
-              <p style={{ fontSize: '0.88rem', color: 'var(--text-dim)', lineHeight: 1.8, marginBottom: '1rem' }}>
-                <strong style={{ color: 'var(--primary)' }}>Sri Sivasubramaniya Nadar College of Engineering</strong> is an autonomous institution affiliated with Anna University and accredited by <strong style={{ color: 'var(--primary)' }}>NAAC with an 'A++' Grade</strong>. Approved by AICTE and recognised by UGC.
-              </p>
-              <p style={{ fontSize: '0.88rem', color: 'var(--text-dim)', lineHeight: 1.8 }}>
-                Founded by Dr. Shiv Nadar in 1996, the institution is known for academic rigour, research focus, and industry alignment — with over 3,000 students across 14 undergraduate and postgraduate programmes.
-              </p>
-            </div>
-
-            {/* Column 2 */}
-            <div>
-              <h4 className="footer-col-title">Department of Mathematics</h4>
-              <p style={{ fontSize: '0.88rem', color: 'var(--text-dim)', lineHeight: 1.8, marginBottom: '1rem' }}>
-                The Department of Mathematics at SSNCE is a centre of academic excellence offering coursework across all engineering disciplines, specialising in <strong style={{ color: 'var(--primary)' }}>Applied Mathematics, Graph Theory, Fluid Dynamics, Cryptography, and Numerical Methods</strong>.
-              </p>
-              <p style={{ fontSize: '0.88rem', color: 'var(--text-dim)', lineHeight: 1.8 }}>
-                It actively facilitates research initiatives, student mentorship programmes (RAMP), and interdisciplinary collaborations.
-              </p>
-            </div>
-
-            {/* Column 3 */}
-            <div>
-              <h4 className="footer-col-title">Contact &amp; Location</h4>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-                <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
-                  <MapPin size={15} style={{ color: 'var(--secondary)', marginTop: '3px', flexShrink: 0 }} />
-                  <span style={{ fontSize: '0.85rem', color: 'var(--text-dim)', lineHeight: 1.7 }}>Rajiv Gandhi Salai, Kalavakkam,<br />Chennai – 603 110, Tamil Nadu, India</span>
-                </div>
-                <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-                  <Phone size={15} style={{ color: 'var(--secondary)', flexShrink: 0 }} />
-                  <span style={{ fontSize: '0.85rem', color: 'var(--text-dim)' }}>+91 44 2746 9700</span>
-                </div>
-                <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-                  <Mail size={15} style={{ color: 'var(--secondary)', flexShrink: 0 }} />
-                  <a href="mailto:principal@ssn.edu.in" style={{ fontSize: '0.85rem', color: 'var(--text-dim)', textDecoration: 'none' }}>principal@ssn.edu.in</a>
-                </div>
-                <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-                  <Globe size={15} style={{ color: 'var(--secondary)', flexShrink: 0 }} />
-                  <a href="https://www.ssn.edu.in" target="_blank" rel="noopener noreferrer"
-                    style={{ fontSize: '0.85rem', color: 'var(--secondary)', textDecoration: 'none', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                    www.ssn.edu.in <ExternalLink size={11} />
-                  </a>
-                </div>
-              </div>
-
-              <h4 className="footer-col-title" style={{ marginTop: '2rem' }}>Quick Links</h4>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                {[
-                  { label: 'SSN College of Engineering', href: 'https://www.ssn.edu.in' },
-                  { label: 'Department of Mathematics', href: 'https://www.ssn.edu.in/department/mathematics/' },
-                  { label: 'NAAC Accreditation', href: 'https://www.ssn.edu.in/naac/' },
-                ].map(link => (
-                  <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer"
-                    style={{ fontSize: '0.82rem', color: 'var(--text-dim)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '5px' }}
-                    onMouseEnter={e => e.currentTarget.style.color = 'var(--secondary)'}
-                    onMouseLeave={e => e.currentTarget.style.color = 'var(--text-dim)'}
-                  >
-                    <ExternalLink size={11} /> {link.label}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
+          <ul className="nav-links" style={{ justifyContent: 'center', flexWrap: 'wrap' }}>
+            <li><Link to="/">Archive</Link></li>
+            <li><Link to="/about">Society</Link></li>
+            <li><Link to="/resources">Library</Link></li>
+            <li><Link to="/mentor-connect/doubts">Ask a Doubt</Link></li>
+            <li><Link to="/mentor-connect/feedback">Give Feedback</Link></li>
+          </ul>
         </div>
 
         <div className="footer-copyright-bar">
-          <div className="container footer-bottom">
+          <div className="container footer-bottom" style={{ justifyContent: 'center' }}>
             <p style={{ color: 'var(--text-dim)', fontSize: '0.75rem', letterSpacing: '2px', fontWeight: '700' }}>
               © 2026 MATHEMATICS HONOR SOCIETY · SSNCE
-            </p>
-            <p style={{ color: 'var(--text-dim)', fontSize: '0.75rem', letterSpacing: '3px', fontWeight: '700' }}>
-              COGNITIO ET VERITAS
             </p>
           </div>
         </div>

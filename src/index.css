@@ -19,6 +19,10 @@
   --p-blue: rgba(186, 215, 255, 0.4);
   --p-green: rgba(187, 247, 208, 0.4);
   --p-purple: rgba(216, 180, 254, 0.4);
+  /* Mentor Connect Pages */
+  .mentor-page-wrap {
+    padding: 100px 0;
+  }
   --p-orange: rgba(254, 215, 170, 0.4);
 
   --font-main: 'Plus Jakarta Sans', sans-serif;
@@ -979,6 +983,19 @@ header {
     gap: 15px !important;
     align-items: center !important;
     justify-content: center;
+  .mentor-form-grid,
+  .mentor-stats-grid,
+  .mentor-strip-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mentor-form-span-2 {
+    grid-column: span 1;
+  }
+
+  .mentor-carousel-wrap {
+    flex-direction: column;
+  }
     width: 100%;
   }
   .hero .mhs-tri-logo { 

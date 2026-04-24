@@ -4,12 +4,7 @@ import { motion as Motion } from 'framer-motion'
 const CoordinateCursor = () => {
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
     const [isHovering, setIsHovering] = useState(false)
-    const [isTouch, setIsTouch] = useState(true)
-
-    useEffect(() => {
-        // Only show on pointer:fine devices (mouse), not touch screens
-        setIsTouch(window.matchMedia('(pointer: coarse)').matches)
-    }, [])
+    const [isTouch] = useState(() => (typeof window !== 'undefined' ? window.matchMedia('(pointer: coarse)').matches : true))
 
     useEffect(() => {
         const handleMouseMove = (e) => {

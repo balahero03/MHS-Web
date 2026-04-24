@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { motion as Motion, AnimatePresence } from 'framer-motion'
 import { Lightbulb, ChevronRight, Hash, RefreshCw, CheckCircle, XCircle } from 'lucide-react'
 
