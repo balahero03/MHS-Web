@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion as Motion } from 'framer-motion'
-import { Globe, MapPin, ExternalLink, ChevronDown } from 'lucide-react'
+import { Globe, MapPin, ExternalLink, ChevronDown, LogIn } from 'lucide-react'
 import './index.css'
 
 import GlobalBackground from './components/GlobalBackground'
@@ -15,6 +15,7 @@ import Blogs from './pages/Blogs'
 import Resources from './pages/Resources'
 import MentorDoubts from './pages/MentorDoubts'
 import MentorFeedback from './pages/MentorFeedback'
+import Login from './pages/Login'
 
 const NavLink = ({ to, label, onClick }) => {
   const location = useLocation()
@@ -51,9 +52,11 @@ function AppInner() {
   const close = () => setMenuOpen(false)
   const currentLabel = location.pathname.startsWith('/mentor-connect')
     ? 'Mentor Connect'
-    : location.pathname === '/'
-      ? 'Archive'
-      : (location.pathname === '/about' ? 'Society' : 'Library')
+    : location.pathname === '/login'
+      ? 'Login'
+      : location.pathname === '/'
+        ? 'Archive'
+        : (location.pathname === '/about' ? 'Society' : 'Library')
 
   return (
     <div className="app">
@@ -119,6 +122,7 @@ function AppInner() {
                   )}
                 </AnimatePresence>
               </li>
+              <NavLink to="/login" label="Login" />
             </ul>
           </nav>
 
@@ -189,7 +193,8 @@ function AppInner() {
               {[
                 { to: "/", label: "Archive", color: "var(--math-blue)", icon: <Globe size={14} /> },
                 { to: "/about", label: "Society", color: "var(--math-green)", icon: <MapPin size={14} /> },
-                { to: "/resources", label: "Library", color: "var(--math-purple)", icon: <ExternalLink size={14} /> }
+                { to: "/resources", label: "Library", color: "var(--math-purple)", icon: <ExternalLink size={14} /> },
+                { to: "/login", label: "Login", color: "var(--math-orange)", icon: <LogIn size={14} /> }
               ].map((item) => (
                 <li key={item.to}>
                   <Link to={item.to} onClick={close} className={`dropdown-item ${location.pathname === item.to ? 'active' : ''}`}>
@@ -251,6 +256,7 @@ function AppInner() {
             <Route path="/resources" element={<Resources />} />
             <Route path="/mentor-connect/doubts" element={<MentorDoubts />} />
             <Route path="/mentor-connect/feedback" element={<MentorFeedback />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </AnimatePresence>
       </main>
@@ -264,6 +270,7 @@ function AppInner() {
             <li><Link to="/resources">Library</Link></li>
             <li><Link to="/mentor-connect/doubts">Ask a Doubt</Link></li>
             <li><Link to="/mentor-connect/feedback">Give Feedback</Link></li>
+            <li><Link to="/login">Login</Link></li>
           </ul>
         </div>
 
