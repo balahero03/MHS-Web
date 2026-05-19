@@ -1,41 +1,27 @@
 import React, { useEffect, useState } from 'react'
 
-/*
-  Phase 0 extracted palette lock for Mentor Connect files:
-  1) body background: #ffffff
-  2) main heading: #1155cc
-  3) paragraph/body text: #64748b
-  4) nav background: #ffffff
-  5) nav link default: #64748b, hover: #1155cc
-  6) accent: #3b82f6
-  7) card background: #ffffff
-  8) card border: #e2e8f0
-  9) footer background: #ffffff
-  10) footer text: #64748b
-*/
-
 const stats = [
-  { value: 'XX%', label: 'Lorem Satisfaction Metric', icon: '★' },
-  { value: 'XXX+', label: 'Lorem Doubts Processed', icon: '✓' },
-  { value: 'XX', label: 'Lorem Active Mentors', icon: '◎' },
-  { value: 'X hrs', label: 'Lorem Avg Response Time', icon: '⏱' }
+  { value: '98%', label: 'Student Satisfaction', icon: '★' },
+  { value: '150+', label: 'Doubts Clarified', icon: '✓' },
+  { value: '12', label: 'Active Mentors', icon: '◎' },
+  { value: '< 2 hrs', label: 'Avg Response Time', icon: '⏱' }
 ]
 
 const testimonials = [
   {
-    quote: 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+    quote: 'The mentors were extremely helpful! I was struggling with multivariable calculus, and the step-by-step explanations cleared all my doubts.',
     stars: 5,
-    name: 'Student •••001'
+    name: 'Student •••402'
   },
   {
-    quote: 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore',
+    quote: 'Quick responses and detailed answers. It would be great if we could also have live doubt-clearing sessions.',
     stars: 4,
-    name: 'Student •••002'
+    name: 'Student •••112'
   },
   {
-    quote: 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna',
+    quote: 'Mentor Connect has been a lifesaver for my PDE assignments. Highly recommend using this resource!',
     stars: 5,
-    name: 'Student •••003'
+    name: 'Student •••993'
   }
 ]
 
@@ -68,7 +54,7 @@ const MentorFeedback = () => {
           <div className="mentor-eyebrow">Mentor Connect</div>
           <h2 className="mentor-title">Give Feedback</h2>
           <p className="mentor-copy">
-            Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi.
+            Your feedback helps us improve the Mentor Connect experience. Let us know how we are doing and what we can do to support you better.
           </p>
         </div>
       </section>
@@ -77,17 +63,17 @@ const MentorFeedback = () => {
         <div className="content-card mentor-card">
           <h3 className="footer-col-title">Feedback Form</h3>
           <p className="mentor-copy mentor-copy-tight">
-            Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip.
+            Please fill out the form below to share your thoughts on your recent mentorship experience. Your responses will remain strictly confidential.
           </p>
 
           <form className="mentor-form-grid" onSubmit={(e) => e.preventDefault()}>
             <div>
               <label htmlFor="feedback-student-name" className="mentor-label">Student Name</label>
-              <input id="feedback-student-name" name="studentName" className="mentor-input" placeholder="Lorem Student" />
+              <input id="feedback-student-name" name="studentName" className="mentor-input" placeholder="John Doe" />
             </div>
             <div>
               <label htmlFor="feedback-roll-number" className="mentor-label">Roll Number</label>
-              <input id="feedback-roll-number" name="rollNumber" className="mentor-input" placeholder="Lorem001" />
+              <input id="feedback-roll-number" name="rollNumber" className="mentor-input" placeholder="2023ABCD001" />
             </div>
             <div>
               <label htmlFor="feedback-category" className="mentor-label">Category</label>
@@ -95,10 +81,11 @@ const MentorFeedback = () => {
                 <option>Mentor Support</option>
                 <option>Response Quality</option>
                 <option>Turnaround Time</option>
+                <option>General Feedback</option>
               </select>
             </div>
             <div>
-              <label htmlFor="feedback-recommendation" className="mentor-label">Recommendation</label>
+              <label htmlFor="feedback-recommendation" className="mentor-label">Would you recommend?</label>
               <select id="feedback-recommendation" name="recommendation" className="mentor-input">
                 <option>Yes</option>
                 <option>No</option>
@@ -107,7 +94,7 @@ const MentorFeedback = () => {
             </div>
 
             <div className="mentor-form-span-2">
-              <label className="mentor-label">Rating</label>
+              <label className="mentor-label">Overall Rating</label>
               <div className="mentor-rating-row" role="group" aria-label="Star rating">
                 {[1, 2, 3, 4, 5].map((i) => (
                   <button
@@ -124,18 +111,18 @@ const MentorFeedback = () => {
             </div>
 
             <div className="mentor-form-span-2">
-              <label htmlFor="feedback-went-well" className="mentor-label">What Went Well</label>
-              <textarea id="feedback-went-well" name="wentWell" className="mentor-textarea" placeholder="Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip." />
+              <label htmlFor="feedback-went-well" className="mentor-label">What Went Well?</label>
+              <textarea id="feedback-went-well" name="wentWell" className="mentor-textarea" placeholder="The mentor explained the steps clearly and provided additional resources." />
             </div>
 
             <div className="mentor-form-span-2">
-              <label htmlFor="feedback-improvements" className="mentor-label">Improvement Suggestions</label>
-              <textarea id="feedback-improvements" name="improvements" className="mentor-textarea" placeholder="Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." />
+              <label htmlFor="feedback-improvements" className="mentor-label">Areas for Improvement</label>
+              <textarea id="feedback-improvements" name="improvements" className="mentor-textarea" placeholder="It would be helpful if the response time was slightly faster." />
             </div>
 
             <div className="mentor-form-span-2">
               <label htmlFor="feedback-additional" className="mentor-label">Additional Comments</label>
-              <textarea id="feedback-additional" name="additional" className="mentor-textarea" placeholder="Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor." />
+              <textarea id="feedback-additional" name="additional" className="mentor-textarea" placeholder="Any other thoughts you'd like to share..." />
             </div>
 
             <div className="mentor-form-span-2">
@@ -147,7 +134,7 @@ const MentorFeedback = () => {
 
       <section className="container mentor-section-gap">
         <div className="content-card mentor-card">
-          <h3 className="footer-col-title">Stats Strip</h3>
+          <h3 className="footer-col-title">Program Statistics</h3>
           <div className="mentor-stats-grid">
             {stats.map((item) => (
               <div key={item.label} className="mentor-stats-card">
@@ -162,7 +149,7 @@ const MentorFeedback = () => {
 
       <section className="container mentor-section-gap mentor-section-end">
         <div className="content-card mentor-card" aria-label="Testimonials">
-          <h3 className="footer-col-title">Testimonial Carousel</h3>
+          <h3 className="footer-col-title">Student Testimonials</h3>
           <div className="mentor-carousel-wrap">
             <button type="button" className="carousel-nav-large" onClick={prevTestimonial} aria-label="Previous">
               ‹

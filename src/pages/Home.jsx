@@ -12,6 +12,34 @@ const Home = () => {
             desc: "A workshop by RAMP (Research & Academic Mentorship Programme) fostering research orientation, academic excellence, and meaningful mentorship among participants. Organized by the Department of Mathematics, SSN College of Engineering.",
             icon: "∂",
             host: "RAMP · SSN College of Engineering"
+        },
+        {
+            title: "Guest Lecture on Fourier Analysis in Life Sciences",
+            date: "Monday before CAT I exams in Sem III",
+            desc: "Invited: Students in Biomedical Engineering. Venue: 2nd Year Lecture Hall, Department of Biomedical Engineering.",
+            icon: "∿",
+            host: "V. A. Sivamurugan, President of MHS"
+        },
+        {
+            title: "Guest Lecture Intuition Behind E(X) - Expected Value",
+            date: "1/7/2026",
+            desc: "Invited: College of Engineering. Venue: Online, Google Meets.",
+            icon: "E(X)",
+            host: "V. A. Sivamurugan, President of MHS"
+        },
+        {
+            title: "Solutions to Higher Order Homogenous Linear Partial Differential Equations",
+            date: "4/6/2026",
+            desc: "Invited: College of Engineering (First preference for this class is for students who failed PDEs in Semester III). Venue: Digital Systems Laboratory, Department of Biomedical Engineering.",
+            icon: "∇²",
+            host: "V. A. Sivamurugan, President of MHS"
+        },
+        {
+            title: "Engineering Fundamentals: Techniques for Factoring Higher Degree Polynomials",
+            date: "4/7/2026",
+            desc: "Invited: College of Engineering (First preference for this class is for students who failed PDEs in Semester III or are signed up as part of our remedial mathematics program). Venue: Digital Systems Laboratory, Department of Biomedical Engineering.",
+            icon: "ƒ(x)",
+            host: "V. A. Sivamurugan, President of MHS"
         }
     ]
     const [index, setIndex] = useState(0)

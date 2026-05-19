@@ -133,15 +133,15 @@ const Society = () => {
     const connectWithMhs = [
         {
             title: 'About the Institution',
-            content: 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi.',
+            content: 'SSN College of Engineering is a premier institute of higher education, known for its academic excellence, vibrant campus life, and focus on holistic student development.',
         },
         {
             title: 'Department of Mathematics',
-            content: 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip.',
+            content: 'The Department of Mathematics at SSNCE offers a rigorous curriculum designed to build strong analytical and problem-solving skills, preparing students for both academic research and industry applications.',
         },
         {
             title: 'Contact & Location',
-            content: 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea.',
+            content: 'We are located at the SSN College of Engineering campus, Rajiv Gandhi Salai (OMR), Kalavakkam, Tamil Nadu. Reach out to us via email at mhs@ssn.edu.in.',
         }
     ]
 
@@ -243,9 +243,9 @@ const Society = () => {
                     <h3 className="footer-col-title">Quick Links</h3>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                         {[
-                            { label: 'Lorem Institutional Portal', href: '#' },
-                            { label: 'Lorem Department Hub', href: '#' },
-                            { label: 'Lorem Accreditation Overview', href: '#' },
+                            { label: 'Institutional Portal', href: 'https://www.ssn.edu.in' },
+                            { label: 'Department Hub', href: 'https://www.ssn.edu.in/college-of-engineering/mathematics-department-ssn-institutions/' },
+                            { label: 'Student Resources', href: '#' },
                         ].map((link) => (
                             <a
                                 key={link.label}
