@@ -336,7 +336,7 @@ header {
 }
 
 .hero {
-  min-height: 80vh;
+  min-height: 98vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -967,7 +967,7 @@ header {
 @media (max-width: 768px) {
   .mhs-name-main { font-size: clamp(2.8rem, 12vw, 4rem); font-weight: 900; line-height: 1; }
   .mhs-id-top { gap: 10px; }
-  .hero { min-height: 60vh; padding: 3rem 0; }
+  .hero { min-height: 98vh; padding: 3rem 0; }
   .content-card { padding: 2rem !important; }
   h2 { font-size: 2.2rem !important; }
   .container { padding: 0 1.25rem; }
@@ -1219,7 +1219,7 @@ html {
   }
 
   .hero {
-    min-height: 60vh;
+    min-height: 98vh;
     padding: 1rem 0;
   }
 

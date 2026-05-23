@@ -16,6 +16,9 @@ import Resources from './pages/Resources'
 import MentorDoubts from './pages/MentorDoubts'
 import MentorFeedback from './pages/MentorFeedback'
 import Login from './pages/Login'
+import MemberDashboard from './pages/MemberDashboard'
+import MentorDashboard from './pages/MentorDashboard'
+import OfficerDashboard from './pages/OfficerDashboard'
 
 const NavLink = ({ to, label, onClick }) => {
   const location = useLocation()
@@ -257,31 +260,36 @@ function AppInner() {
             <Route path="/mentor-connect/doubts" element={<MentorDoubts />} />
             <Route path="/mentor-connect/feedback" element={<MentorFeedback />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/dashboard/member" element={<MemberDashboard />} />
+            <Route path="/dashboard/mentor" element={<MentorDashboard />} />
+            <Route path="/dashboard/officer" element={<OfficerDashboard />} />
           </Routes>
         </AnimatePresence>
       </main>
 
       {/* ── Footer ───────────────────────────────────────────────── */}
-      <footer className="main-footer">
-        <div className="container footer-content-container">
-          <ul className="nav-links" style={{ justifyContent: 'center', flexWrap: 'wrap' }}>
-            <li><Link to="/">Archive</Link></li>
-            <li><Link to="/about">Society</Link></li>
-            <li><Link to="/resources">Library</Link></li>
-            <li><Link to="/mentor-connect/doubts">Ask a Doubt</Link></li>
-            <li><Link to="/mentor-connect/feedback">Give Feedback</Link></li>
-            <li><Link to="/login">Login</Link></li>
-          </ul>
-        </div>
-
-        <div className="footer-copyright-bar">
-          <div className="container footer-bottom" style={{ justifyContent: 'center' }}>
-            <p style={{ color: 'var(--text-dim)', fontSize: '0.75rem', letterSpacing: '2px', fontWeight: '700' }}>
-              © 2026 MATHEMATICS HONOR SOCIETY · SSNCE
-            </p>
+      {location.pathname !== '/login' && location.pathname !== '/about' && !location.pathname.startsWith('/dashboard') && (
+        <footer className="main-footer">
+          <div className="container footer-content-container">
+            <ul className="nav-links" style={{ justifyContent: 'center', flexWrap: 'wrap' }}>
+              <li><Link to="/">Archive</Link></li>
+              <li><Link to="/about">Society</Link></li>
+              <li><Link to="/resources">Library</Link></li>
+              <li><Link to="/mentor-connect/doubts">Ask a Doubt</Link></li>
+              <li><Link to="/mentor-connect/feedback">Give Feedback</Link></li>
+              <li><Link to="/login">Login</Link></li>
+            </ul>
           </div>
-        </div>
-      </footer>
+
+          <div className="footer-copyright-bar">
+            <div className="container footer-bottom" style={{ justifyContent: 'center' }}>
+              <p style={{ color: 'var(--text-dim)', fontSize: '0.75rem', letterSpacing: '2px', fontWeight: '700' }}>
+                © 2026 MATHEMATICS HONOR SOCIETY · SSNCE
+              </p>
+            </div>
+          </div>
+        </footer>
+      )}
     </div>
   )
 }
